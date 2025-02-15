@@ -84,6 +84,17 @@ A big thanks to all our sponsors! Without them, it wouldn't be possible to creat
 <img src="https://github.com/DOSEV5.png" alt="DOSEV5" width="40px">
 </a>
 
+### ⏱️ Quick Setup
+> 1. Download the latest version of Open Ticket on [Github](https://github.com/DJj123dj/open-ticket).
+> 2. Make sure node.js & npm are installed using `node -v` (minimum `v18`).
+> 3. Install any required dependencies using `npm install`.
+> 4. Configure the bot in the `./config/` directory.
+> 5. Start the bot using `npm start` or `node index.js`
+>    - The bot will let you know any existing config errors.
+>    - Fix these errors and restart the bot.
+> 6. Enjoy using Open Ticket!
+> ### [📔 Visit Documentation](https://otdocs.dj-dj.be)
+
 ## 📸 Preview
 <img alt="Ticket Message" width="350px" src="https://apis.dj-dj.be/cdn/openticket/preview-v4/ticket.png">
 <img alt="Ticket Stats Message" width="350px" src="https://apis.dj-dj.be/cdn/openticket/preview-v4/stats.png">
