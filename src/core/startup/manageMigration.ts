@@ -29,6 +29,8 @@ export const loadVersionMigrationSystem = async () => {
 
     //LEAVE MIGRATION CONTEXT
     await unloadMigrationContext()
+
+    return lastVersion
 }
 
 const preloadMigrationContext = async () => {
@@ -71,7 +73,27 @@ const loadAllVersionMigrations = async (lastVersion:api.ODVersion) => {
         if (migration.version.compare(lastVersion) == "higher"){
             const success = await migration.migrate()
             if (success) opendiscord.log("Migrated data to "+migration.version.toString()+"!","debug",[
-                {key:"success",value:success ? "true" : "false"}
+                {key:"success",value:success ? "true" : "false"},
+                {key:"afterInit",value:"false"}
+            ])
+        }
+    }
+}
+
+export const loadAllAfterInitVersionMigrations = async (lastVersion:api.ODVersion) => {
+    const migrations = (await import("./migration.js")).migrations
+    migrations.sort((a,b) => {
+        const comparison = a.version.compare(b.version)
+        if (comparison == "equal") return 0
+        else if (comparison == "higher") return 1
+        else return -1
+    })
+    for (const migration of migrations){
+        if (migration.version.compare(lastVersion) == "higher"){
+            const success = await migration.migrateAfterInit()
+            if (success) opendiscord.log("Migrated data to "+migration.version.toString()+"!","debug",[
+                {key:"success",value:success ? "true" : "false"},
+                {key:"afterInit",value:"true"}
             ])
         }
     }

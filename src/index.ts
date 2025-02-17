@@ -76,8 +76,8 @@ const main = async () => {
         }
     })
 
-    //handle data migration
-    await (await import("./core/startup/manageMigration.js")).loadVersionMigrationSystem()
+    //handle data migration (PART 1)
+    const lastVersion = await (await import("./core/startup/manageMigration.js")).loadVersionMigrationSystem()
 
     //load plugins
     if (opendiscord.defaults.getDefault("pluginLoading")){
@@ -222,6 +222,9 @@ const main = async () => {
 
         await opendiscord.events.get("afterLanguagesSelected").emit([opendiscord.languages.get(languageId),opendiscord.languages.get(backupLanguageId),opendiscord.languages])    
     }
+
+    //handle data migration (PART 2)
+    if (lastVersion) await (await import("./core/startup/manageMigration.js")).loadAllAfterInitVersionMigrations(lastVersion)
     
     //load config checker
     opendiscord.log("Loading config checker...","system")

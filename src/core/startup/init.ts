@@ -112,7 +112,7 @@ export interface ODUtilities {
      * 
      * It shouldn't be used by plugins because this is an internal API feature!
      */
-    ODVersionMigration:new (version:api.ODVersion,func:() => void|Promise<void>) => ODVersionMigration
+    ODVersionMigration:new (version:api.ODVersion,func:() => void|Promise<void>,afterInitFunc:() => void|Promise<void>) => ODVersionMigration
 }
 
 /**## ODVersionMigration `utility class`
@@ -125,15 +125,27 @@ export class ODVersionMigration {
     version: api.ODVersion
     /**The migration function */
     #func: () => void|Promise<void>
+    /**The migration function */
+    #afterInitFunc: () => void|Promise<void>
 
-    constructor(version:api.ODVersion,func:() => void|Promise<void>){
+    constructor(version:api.ODVersion,func:() => void|Promise<void>,afterInitFunc:() => void|Promise<void>){
         this.version = version
         this.#func = func
+        this.#afterInitFunc = afterInitFunc
     }
     /**Run this version migration as a plugin. Returns `false` when someting goes wrong. */
     async migrate(): Promise<boolean> {
         try{
             await this.#func()
+            return true
+        }catch{
+            return false
+        }
+    }
+    /**Run this version migration as a plugin. Returns `false` when someting goes wrong. */
+    async migrateAfterInit(): Promise<boolean> {
+        try{
+            await this.#afterInitFunc()
             return true
         }catch{
             return false
