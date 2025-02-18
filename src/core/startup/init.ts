@@ -133,7 +133,7 @@ export class ODVersionMigration {
         this.#func = func
         this.#afterInitFunc = afterInitFunc
     }
-    /**Run this version migration as a plugin. Returns `false` when someting goes wrong. */
+    /**Run this version migration as a plugin. Returns `false` when something goes wrong. */
     async migrate(): Promise<boolean> {
         try{
             await this.#func()
@@ -142,7 +142,7 @@ export class ODVersionMigration {
             return false
         }
     }
-    /**Run this version migration as a plugin. Returns `false` when someting goes wrong. */
+    /**Run this version migration as a plugin (after other plugins have loaded). Returns `false` when something goes wrong. */
     async migrateAfterInit(): Promise<boolean> {
         try{
             await this.#afterInitFunc()

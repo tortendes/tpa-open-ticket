@@ -459,7 +459,7 @@ const errorMessages = () => {
         })
     )
 
-    //ERROR NOD IN GUILD
+    //ERROR NOT IN GUILD
     messages.add(new api.ODMessage("opendiscord:error-not-in-guild"))
     messages.get("opendiscord:error-not-in-guild").workers.add(
         new api.ODWorker("opendiscord:error-not-in-guild",0,async (instance,params,source) => {

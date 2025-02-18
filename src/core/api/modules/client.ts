@@ -68,7 +68,7 @@ export class ODClientManager {
 
     /**The main server of the bot. Provided by serverId in the config */
     mainServer: discord.Guild|null = null
-    /**(❌ DO NOD OVERWRITE ❌) Internal Open Ticket function to continue the startup when the client is ready! */
+    /**(❌ DO NOT OVERWRITE ❌) Internal Open Ticket function to continue the startup when the client is ready! */
     readyListener: (() => Promise<void>)|null = null
     /**The status manager is responsible for setting the bot status. */
     activity: ODClientActivityManager
@@ -1417,7 +1417,7 @@ export class ODTextCommandManager extends ODManager<ODTextCommand> {
                     tempContent = tempContent.substring(trueValue.length+1)
 
                 }else if (option.required){
-                    //REQUIRED => ERROR IF NOD EXISTING
+                    //REQUIRED => ERROR IF NOT EXISTING
                     const invalidregex = /^[^ ]+/
                     const invalidRes = invalidregex.exec(tempContent)
                     if (invalidRes) optionError("invalid_option",option,location,invalidRes[0],"boolean")
@@ -1463,7 +1463,7 @@ export class ODTextCommandManager extends ODManager<ODTextCommand> {
                         })
                     }
                 }else if (option.required){
-                    //REQUIRED => ERROR IF NOD EXISTING
+                    //REQUIRED => ERROR IF NOT EXISTING
                     const invalidRegex = /^[^ ]+/
                     const invalidRes = invalidRegex.exec(tempContent)
                     if (invalidRes) optionError("invalid_option",option,location,invalidRes[0],"number_invalid")
@@ -1489,7 +1489,7 @@ export class ODTextCommandManager extends ODManager<ODTextCommand> {
                         optionError("invalid_option",option,location,value,"string_choice")
 
                     }else if (option.required && value === ""){
-                        //REQUIRED => ERROR IF NOD EXISTING
+                        //REQUIRED => ERROR IF NOT EXISTING
                         optionError("missing_option",option,location)
                         
                     }else{
@@ -1529,7 +1529,7 @@ export class ODTextCommandManager extends ODManager<ODTextCommand> {
                             })
                         }
                     }else if (option.required){
-                        //REQUIRED => ERROR IF NOD EXISTING
+                        //REQUIRED => ERROR IF NOT EXISTING
                         optionError("missing_option",option,location)
                     }
                 }
@@ -1566,7 +1566,7 @@ export class ODTextCommandManager extends ODManager<ODTextCommand> {
                         }
                     }  
                 }else if (option.required){
-                    //REQUIRED => ERROR IF NOD EXISTING
+                    //REQUIRED => ERROR IF NOT EXISTING
                     const invalidRegex = /^[^ ]+/
                     const invalidRes = invalidRegex.exec(tempContent)
                     if (invalidRes) optionError("invalid_option",option,location,invalidRes[0],"channel_not_found")
@@ -1601,7 +1601,7 @@ export class ODTextCommandManager extends ODManager<ODTextCommand> {
                         }
                     }
                 }else if (option.required){
-                    //REQUIRED => ERROR IF NOD EXISTING
+                    //REQUIRED => ERROR IF NOT EXISTING
                     const invalidRegex = /^[^ ]+/
                     const invalidRes = invalidRegex.exec(tempContent)
                     if (invalidRes) optionError("invalid_option",option,location,invalidRes[0],"role_not_found")
@@ -1636,7 +1636,7 @@ export class ODTextCommandManager extends ODManager<ODTextCommand> {
                         }
                     }
                 }else if (option.required){
-                    //REQUIRED => ERROR IF NOD EXISTING
+                    //REQUIRED => ERROR IF NOT EXISTING
                     const invalidRegex = /^[^ ]+/
                     const invalidRes = invalidRegex.exec(tempContent)
                     if (invalidRes) optionError("invalid_option",option,location,invalidRes[0],"member_not_found")
@@ -1667,7 +1667,7 @@ export class ODTextCommandManager extends ODManager<ODTextCommand> {
                         optionError("invalid_option",option,location,value,"user_not_found")
                     }
                 }else if (option.required){
-                    //REQUIRED => ERROR IF NOD EXISTING
+                    //REQUIRED => ERROR IF NOT EXISTING
                     const invalidRegex = /^[^ ]+/
                     const invalidRes = invalidRegex.exec(tempContent)
                     if (invalidRes) optionError("invalid_option",option,location,invalidRes[0],"user_not_found")
