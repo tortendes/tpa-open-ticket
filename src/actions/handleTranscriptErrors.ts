@@ -44,8 +44,7 @@ export const registerButtonResponders = async () => {
         }),
         new api.ODWorker("opendiscord:delete-ticket",0,async (instance,params,source,cancel) => {
             const {guild,channel,user} = instance
-            const originalSource = instance.interaction.customId.split("_")[1]
-            if (originalSource != "slash" && originalSource != "text" && originalSource != "ticket-message" && originalSource != "reopen-message" && originalSource != "close-message" && originalSource != "other") return
+            const originalSource = instance.interaction.customId.split("_")[1] as api.ODActionManagerIds_Default["opendiscord:delete-ticket"]["source"]
             
             if (!guild){
                 instance.reply(await opendiscord.builders.messages.getSafe("opendiscord:error-not-in-guild").build("button",{channel,user}))
@@ -122,8 +121,7 @@ export const registerButtonResponders = async () => {
         }),
         new api.ODWorker("opendiscord:delete-ticket",0,async (instance,params,source,cancel) => {
             const {guild,channel,user} = instance
-            const originalSource = instance.interaction.customId.split("_")[1]
-            if (originalSource != "slash" && originalSource != "text" && originalSource != "ticket-message" && originalSource != "reopen-message" && originalSource != "close-message" && originalSource != "other") return
+            const originalSource = instance.interaction.customId.split("_")[1] as api.ODActionManagerIds_Default["opendiscord:delete-ticket"]["source"]
             
             if (!guild){
                 instance.reply(await opendiscord.builders.messages.getSafe("opendiscord:error-not-in-guild").build("button",{channel,user}))

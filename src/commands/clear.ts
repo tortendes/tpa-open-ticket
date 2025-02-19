@@ -92,12 +92,11 @@ export const registerButtonResponders = async () => {
         new api.ODWorker("opendiscord:clear-continue",0,async (instance,params,source,cancel) => {
             const {guild,channel,user} = instance
             if (!guild || channel.isDMBased()) return
-            const originalSource = instance.interaction.customId.split("_")[1]
-            if (originalSource != "slash" && originalSource != "text" && originalSource != "other") return
+            const originalSource = instance.interaction.customId.split("_")[1] as api.ODActionManagerIds_Default["opendiscord:clear-tickets"]["source"]
             const filter = instance.interaction.customId.split("_")[2] as api.ODTicketClearFilter
             
             //start ticket clear
-            instance.defer("update",true)
+            await instance.defer("update",true)
             const list: string[] = []
             const ticketList = opendiscord.tickets.getAll().filter((ticket) => {
                 if (filter == "all") return true

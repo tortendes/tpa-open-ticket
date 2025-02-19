@@ -88,12 +88,12 @@ export const registerButtonResponders = async () => {
     opendiscord.responders.buttons.add(new api.ODButtonResponder("opendiscord:reopen-ticket",/^od:reopen-ticket/))
     opendiscord.responders.buttons.get("opendiscord:reopen-ticket").workers.add(
         new api.ODWorker("opendiscord:reopen-ticket",0,async (instance,params,source,cancel) => {
-            const originalSource = instance.interaction.customId.split("_")[1]
-            if (originalSource != "ticket-message" && originalSource != "close-message" && originalSource != "autoclose-message") return
+            const originalSource = instance.interaction.customId.split("_")[1] as Exclude<api.ODActionManagerIds_Default["opendiscord:reopen-ticket"]["source"],"slash"|"text">
             
             if (originalSource == "ticket-message") await opendiscord.verifybars.get("opendiscord:reopen-ticket-ticket-message").activate(instance)
             else if (originalSource == "close-message") await opendiscord.verifybars.get("opendiscord:reopen-ticket-close-message").activate(instance)
-            else await opendiscord.verifybars.get("opendiscord:reopen-ticket-autoclose-message").activate(instance)
+            else if (originalSource == "autoclose-message") await opendiscord.verifybars.get("opendiscord:reopen-ticket-autoclose-message").activate(instance)
+            else await instance.defer("update",false)
         })
     )
 }
@@ -116,7 +116,7 @@ export const registerModalResponders = async () => {
                 return
             }
 
-            const originalSource = instance.interaction.customId.split("_")[2] as ("ticket-message"|"close-message"|"autoclose-message"|"other")
+            const originalSource = instance.interaction.customId.split("_")[2] as Exclude<api.ODActionManagerIds_Default["opendiscord:reopen-ticket"]["source"],"slash"|"text">
             const reason = instance.values.getTextField("reason",true)
 
             //reopen with reason
@@ -132,7 +132,7 @@ export const registerModalResponders = async () => {
                 await instance.defer("update",false)
                 await opendiscord.actions.get("opendiscord:reopen-ticket").run(originalSource,{guild,channel,user,ticket,reason,sendMessage:false})
                 await instance.update(await opendiscord.builders.messages.getSafe("opendiscord:reopen-message").build("other",{guild,channel,user,ticket,reason}))
-            }else if (originalSource == "other"){
+            }else{
                 await instance.defer("update",false)
                 await opendiscord.actions.get("opendiscord:reopen-ticket").run(originalSource,{guild,channel,user,ticket,reason,sendMessage:true})
             }

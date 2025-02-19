@@ -84,13 +84,13 @@ export const registerButtonResponders = async () => {
     opendiscord.responders.buttons.add(new api.ODButtonResponder("opendiscord:delete-ticket",/^od:delete-ticket/))
     opendiscord.responders.buttons.get("opendiscord:delete-ticket").workers.add(
         new api.ODWorker("opendiscord:delete-ticket",0,async (instance,params,source,cancel) => {
-            const originalSource = instance.interaction.customId.split("_")[1]
-            if (originalSource != "ticket-message" && originalSource != "reopen-message" && originalSource != "close-message" && originalSource != "autoclose-message") return
+            const originalSource = instance.interaction.customId.split("_")[1] as Exclude<api.ODActionManagerIds_Default["opendiscord:delete-ticket"]["source"],"slash"|"text"|"autodelete"|"clear">
             
             if (originalSource == "ticket-message") await opendiscord.verifybars.get("opendiscord:delete-ticket-ticket-message").activate(instance)
             else if (originalSource == "close-message") await opendiscord.verifybars.get("opendiscord:delete-ticket-close-message").activate(instance)
             else if (originalSource == "reopen-message") await opendiscord.verifybars.get("opendiscord:delete-ticket-reopen-message").activate(instance)
             else if (originalSource == "autoclose-message") await opendiscord.verifybars.get("opendiscord:delete-ticket-autoclose-message").activate(instance)
+            else await instance.defer("update",false)
         })
     )
 }
@@ -113,7 +113,7 @@ export const registerModalResponders = async () => {
                 return
             }
 
-            const originalSource = instance.interaction.customId.split("_")[2] as ("ticket-message"|"reopen-message"|"close-message"|"autoclose-message"|"other")
+            const originalSource = instance.interaction.customId.split("_")[2] as Exclude<api.ODActionManagerIds_Default["opendiscord:delete-ticket"]["source"],"slash"|"text"|"autodelete"|"clear">
             const reason = instance.values.getTextField("reason",true)
 
             //delete with reason
@@ -139,7 +139,7 @@ export const registerModalResponders = async () => {
                 //don't await DELETE action => else it will update the message after the channel has been deleted
                 opendiscord.actions.get("opendiscord:delete-ticket").run(originalSource,{guild,channel,user,ticket,reason,sendMessage:false,withoutTranscript:false})
                 await instance.update(await opendiscord.builders.messages.getSafe("opendiscord:delete-message").build("other",{guild,channel,user,ticket,reason}))
-            }else if (originalSource == "other"){
+            }else{
                 await instance.defer("update",false)
                 //don't await DELETE action => else it will update the message after the channel has been deleted
                 opendiscord.actions.get("opendiscord:delete-ticket").run(originalSource,{guild,channel,user,ticket,reason,sendMessage:true,withoutTranscript:false})

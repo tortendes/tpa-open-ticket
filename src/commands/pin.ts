@@ -88,11 +88,11 @@ export const registerButtonResponders = async () => {
     opendiscord.responders.buttons.add(new api.ODButtonResponder("opendiscord:pin-ticket",/^od:pin-ticket/))
     opendiscord.responders.buttons.get("opendiscord:pin-ticket").workers.add(
         new api.ODWorker("opendiscord:pin-ticket",0,async (instance,params,source,cancel) => {
-            const originalSource = instance.interaction.customId.split("_")[1]
-            if (originalSource != "ticket-message" && originalSource != "unpin-message") return
-            
+            const originalSource = instance.interaction.customId.split("_")[1] as Exclude<api.ODActionManagerIds_Default["opendiscord:pin-ticket"]["source"],"slash"|"text">
+
             if (originalSource == "ticket-message") await opendiscord.verifybars.get("opendiscord:pin-ticket-ticket-message").activate(instance)
-            else await opendiscord.verifybars.get("opendiscord:pin-ticket-unpin-message").activate(instance)
+            else if (originalSource == "unpin-message") await opendiscord.verifybars.get("opendiscord:pin-ticket-unpin-message").activate(instance)
+            else await instance.defer("update",false)
         })
     )
 }
@@ -115,7 +115,7 @@ export const registerModalResponders = async () => {
                 return
             }
 
-            const originalSource = instance.interaction.customId.split("_")[2] as ("ticket-message"|"unpin-message"|"other")
+            const originalSource = instance.interaction.customId.split("_")[2] as Exclude<api.ODActionManagerIds_Default["opendiscord:pin-ticket"]["source"],"slash"|"text">
             const reason = instance.values.getTextField("reason",true)
 
             //pin with reason
@@ -127,7 +127,7 @@ export const registerModalResponders = async () => {
                 await instance.defer("update",false)
                 await opendiscord.actions.get("opendiscord:pin-ticket").run(originalSource,{guild,channel,user,ticket,reason,sendMessage:false})
                 await instance.update(await opendiscord.builders.messages.getSafe("opendiscord:pin-message").build("other",{guild,channel,user,ticket,reason}))
-            }else if (originalSource == "other"){
+            }else{
                 await instance.defer("update",false)
                 await opendiscord.actions.get("opendiscord:pin-ticket").run(originalSource,{guild,channel,user,ticket,reason,sendMessage:true})
             }
