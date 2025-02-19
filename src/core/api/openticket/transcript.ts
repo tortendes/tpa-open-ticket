@@ -318,7 +318,10 @@ export class ODTranscriptCollector {
                     const restMsg = await this.#client.rest.get(discord.Routes.channelMessage(msg.channelId,msg.id)) as discord.APIMessage & {interaction_metadata:{name:string}}
                     const commandName = restMsg.interaction_metadata.name ?? "unknown-command"
                     //slash command reply
-                    const member = await msg.guild.members.fetch(msg.interactionMetadata.user.id)
+                    let member: discord.GuildMember|null = null
+                    try{
+                        member = await msg.guild.members.fetch(msg.interactionMetadata.user.id)
+                    }catch{} //member not found (user left the server)
                     reply = {
                         type:"interaction",
                         name:commandName,
