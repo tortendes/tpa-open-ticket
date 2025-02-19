@@ -14,12 +14,32 @@ export const registerActions = async () => {
             
             await opendiscord.events.get("onTicketsClear").emit([list,user,channel,filter])
             const nameList: string[] = []
-            for (const ticket of list){
-                const ticketChannel = await opendiscord.tickets.getTicketChannel(ticket)
-                if (!ticketChannel) return
-                nameList.push("#"+ticketChannel.name)
-                await opendiscord.actions.get("opendiscord:delete-ticket").run("clear",{guild,channel:ticketChannel,user,ticket,reason:"Cleared Ticket",sendMessage:true,withoutTranscript:false})
+
+            //split tickets into smaller groups of 10 (to decrease ratelimit chances for HTML Transcripts & discord API)
+            const subGroupList: api.ODTicket[][] = []
+            let tempSubGroup: api.ODTicket[] = []
+            list.forEach((ticket,index) => {
+                tempSubGroup.push(ticket)
+                if (tempSubGroup.length >= 10){
+                    subGroupList.push(tempSubGroup)
+                    tempSubGroup = []
+                }
+            })
+            if (tempSubGroup.length > 0) subGroupList.push(tempSubGroup)
+
+            let groupIndex = 0
+            for (const ticketGroup of subGroupList){
+                for (const ticket of ticketGroup){
+                    const ticketChannel = await opendiscord.tickets.getTicketChannel(ticket)
+                    if (!ticketChannel) return
+                    nameList.push("#"+ticketChannel.name)
+                    await opendiscord.actions.get("opendiscord:delete-ticket").run("clear",{guild,channel:ticketChannel,user,ticket,reason:"Cleared Ticket",sendMessage:true,withoutTranscript:false})
+                    await utilities.timer(2000) //wait 2sec between each deletion
+                }
+                if (groupIndex < subGroupList.length-1) await utilities.timer(45*1000) //wait 45sec between each group deletion (10 tickets)
+                groupIndex++
             }
+            
             instance.list = nameList
             await opendiscord.events.get("afterTicketsCleared").emit([list,user,channel,filter])
         }),
