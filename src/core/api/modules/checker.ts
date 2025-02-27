@@ -1,7 +1,7 @@
 ///////////////////////////////////////
 //CONFIG CHECKER MODULE
 ///////////////////////////////////////
-import { ODId, ODManager, ODManagerData, ODValidId, ODValidJsonType } from "./base"
+import { ODDiscordIdType, ODId, ODManager, ODManagerData, ODValidId, ODValidJsonType } from "./base"
 import { ODConfig } from "./config"
 import { ODLanguageManager } from "./language"
 import { ODDebugger } from "./console"
@@ -218,6 +218,11 @@ export class ODCheckerTranslationRegister {
     }
 }
 
+/**## ODCheckerFunctionCallback `type`
+ * This is the function used in the `ODCheckerFunction` class.
+ */
+export type ODCheckerFunctionCallback = (manager:ODCheckerManager, functions:ODCheckerFunctionManager) => ODCheckerResult
+
 /**## ODCheckerFunction `class`
  * This is an Open Ticket config checker function.
  * 
@@ -225,10 +230,10 @@ export class ODCheckerTranslationRegister {
  * It's mostly used for things that need to be checked globally!
  */
 export class ODCheckerFunction extends ODManagerData {
-    /**The function itself :) */
-    func: (manager:ODCheckerManager, functions:ODCheckerFunctionManager) => ODCheckerResult
+    /**The function which will be executed globally after all config checkers. */
+    func: ODCheckerFunctionCallback
 
-    constructor(id:ODValidId, func:(manager:ODCheckerManager, functions:ODCheckerFunctionManager) => ODCheckerResult){
+    constructor(id:ODValidId, func:ODCheckerFunctionCallback){
         super(id)
         this.func = func
     }
@@ -1043,13 +1048,13 @@ export class ODCheckerEnabledObjectStructure extends ODCheckerStructure {
  */
 export class ODCheckerCustomStructure_DiscordId extends ODCheckerStringStructure {
     /**The type of id (used in rendering) */
-    readonly type: "role"|"server"|"channel"|"category"|"user"|"member"|"interaction"|"message"
+    readonly type: ODDiscordIdType
     /**Is this id allowed to be empty */
     readonly emptyAllowed: boolean
     /**Extra matches (value will also be valid when one of these options match) */
     readonly extraOptions: string[]
 
-    constructor(id:ODValidId, type:"role"|"server"|"channel"|"category"|"user"|"member"|"interaction"|"message", emptyAllowed:boolean, extraOptions:string[], options?:ODCheckerStringStructureOptions){
+    constructor(id:ODValidId, type:ODDiscordIdType, emptyAllowed:boolean, extraOptions:string[], options?:ODCheckerStringStructureOptions){
         //add premade custom structure checker
         const newOptions = options ?? {}
         newOptions.custom = (checker,value,locationTrace,locationId,locationDocs) => {
@@ -1083,11 +1088,11 @@ export class ODCheckerCustomStructure_DiscordId extends ODCheckerStringStructure
  */
 export class ODCheckerCustomStructure_DiscordIdArray extends ODCheckerArrayStructure {
     /**The type of id (used in rendering) */
-    readonly type: "role"|"server"|"channel"|"category"|"user"|"member"|"interaction"|"message"
+    readonly type: ODDiscordIdType
     /**Extra matches (value will also be valid when one of these options match) */
     readonly extraOptions: string[]
     
-    constructor(id:ODValidId, type:"role"|"server"|"channel"|"category"|"user"|"member"|"interaction"|"message", extraOptions:string[], options?:ODCheckerArrayStructureOptions, idOptions?:ODCheckerStringStructureOptions){
+    constructor(id:ODValidId, type:ODDiscordIdType, extraOptions:string[], options?:ODCheckerArrayStructureOptions, idOptions?:ODCheckerStringStructureOptions){
         //add premade custom structure checker
         const newOptions = options ?? {}
         newOptions.propertyChecker = new ODCheckerCustomStructure_DiscordId(id,type,false,extraOptions,idOptions)

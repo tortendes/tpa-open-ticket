@@ -40,6 +40,11 @@ export type ODValidJsonType = string|number|boolean|object|ODValidJsonType[]|nul
  */
 export type ODInterfaceWithPartialProperty<Interface,Key extends keyof Interface> = Omit<Interface,Key> & Partial<Pick<Interface,Key>>
 
+/**## ODDiscordIdType `type`
+ * A list of all available discord ID types. Used in the config checker.
+ */
+export type ODDiscordIdType = "role"|"server"|"channel"|"category"|"user"|"member"|"interaction"|"message"
+
 /**## ODId `class`
  * This is an Open Ticket identifier.
  * 

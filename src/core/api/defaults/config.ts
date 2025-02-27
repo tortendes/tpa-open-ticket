@@ -77,6 +77,170 @@ export interface ODJsonConfig_DefaultMessageSettingsType {
  */
 export type ODJsonConfig_DefaultCmdPermissionSettingsType = "admin"|"everyone"|"none"|string
 
+/**## ODJsonConfig_DefaultInfo `interface`
+ * This object contains a few URLs and metadata for the config.
+ */
+export interface ODJsonConfig_DefaultInfo {
+    /**A link to the Open Ticket documentation. */
+    support:string,
+    /**A link to the DJdj Development discord server. */
+    discord:string,
+    /**The version of Open Ticket this config is compatible with. */
+    version:string
+}
+
+/**## ODJsonConfig_DefaultSystemLogs `interface`
+ * All settings related to the log channel.
+ */
+export interface ODJsonConfig_DefaultSystemLogs {
+    /**Enable logging. Individual actions should still be added via the `"system"."messages"..."logs"` */
+    enabled:boolean,
+    /**The channel to send logs to. */
+    channel:string
+}
+
+/**## ODJsonConfig_DefaultSystemLimits `interface`
+ * All settings related to global ticket limits.
+ */
+export interface ODJsonConfig_DefaultSystemLimits {
+    /**Enable global ticket limits. */
+    enabled:boolean,
+    /**The maximum amount of tickets that are allowed in the server at the same time. */
+    globalMaximum:number,
+    /**The maximum amount of tickets that a user is allowed to create at the same time. */
+    userMaximum:number
+}
+
+/**## ODJsonConfig_DefaultSystemPermissions `interface`
+ * Configure permissions for all Open Ticket commands & actions.
+ */
+export interface ODJsonConfig_DefaultSystemPermissions {
+    help:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    panel:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    ticket:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    close:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    delete:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    reopen:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    claim:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    unclaim:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    pin:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    unpin:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    move:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    rename:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    add:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    remove:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    blacklist:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    stats:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    clear:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    autoclose:ODJsonConfig_DefaultCmdPermissionSettingsType,
+    autodelete:ODJsonConfig_DefaultCmdPermissionSettingsType
+}
+
+/**## ODJsonConfig_DefaultSystemMessages `interface`
+ * Configure dm & log messages for all Open Ticket commands & actions.
+ */
+export interface ODJsonConfig_DefaultSystemMessages {
+    creation:ODJsonConfig_DefaultMessageSettingsType,
+    closing:ODJsonConfig_DefaultMessageSettingsType,
+    deleting:ODJsonConfig_DefaultMessageSettingsType,
+    reopening:ODJsonConfig_DefaultMessageSettingsType,
+    claiming:ODJsonConfig_DefaultMessageSettingsType,
+    pinning:ODJsonConfig_DefaultMessageSettingsType,
+    adding:ODJsonConfig_DefaultMessageSettingsType,
+    removing:ODJsonConfig_DefaultMessageSettingsType,
+    renaming:ODJsonConfig_DefaultMessageSettingsType,
+    moving:ODJsonConfig_DefaultMessageSettingsType,
+    blacklisting:ODJsonConfig_DefaultMessageSettingsType,
+    roleAdding:ODJsonConfig_DefaultMessageSettingsType,
+    roleRemoving:ODJsonConfig_DefaultMessageSettingsType
+}
+
+/**## ODJsonConfig_DefaultSystem `interface`
+ * All settings related to the ticket system.
+ */
+export interface ODJsonConfig_DefaultSystem {
+    /**Remove all participants (except admins) from the ticket when it's closed. */
+    removeParticipantsOnClose:boolean,
+    /**Reply with an ephemeral message when a ticket is created. */
+    replyOnTicketCreation:boolean,
+    /**Reply with an ephemeral message when reaction roles are changed. */
+    replyOnReactionRole:boolean,
+    /**Use a translated config checker in the console. */
+    useTranslatedConfigChecker:boolean,
+    /**Prefer slash-commands over text-commands when displaying them in menu's and messages. */
+    preferSlashOverText:boolean,
+    /**Reply with "unknown command" when the prefix is used without a valid command. */
+    sendErrorOnUnknownCommand:boolean,
+    /**Display the question fields (in a ticket message) in code blocks. */
+    questionFieldsInCodeBlock:boolean,
+    /**Disable the (✅❌) buttons and directly run the action. */
+    disableVerifyBars:boolean,
+    /**Display error embeds/messages with red instead of the default bot color. */
+    useRedErrorEmbeds:boolean,
+    /**The emoji style used in the bot. This will affect all embeds, titles & messages in the bot. */
+    emojiStyle:"before"|"after"|"double"|"disabled",
+
+    /**Enable/disable the ticket claim & unclaim button in the ticket message. */
+    enableTicketClaimButtons:boolean,
+    /**Enable/disable the ticket close & re-open button in the ticket message. */
+    enableTicketCloseButtons:boolean,
+    /**Enable/disable the ticket pin & unpin button in the ticket message. */
+    enableTicketPinButtons:boolean,
+    /**Enable/disable the ticket delete button in the ticket message. */
+    enableTicketDeleteButtons:boolean,
+    /**Enable/disable the "with reason" button for all actions in the ticket message. */
+    enableTicketActionWithReason:boolean,
+    /**Enable/disable the delete without transcript feature (button & /delete command). */
+    enableDeleteWithoutTranscript:boolean,
+
+    /**All settings related to the log channel. */
+    logs:ODJsonConfig_DefaultSystemLogs,
+    
+    /**All settings related to global ticket limits. */
+    limits:ODJsonConfig_DefaultSystemLimits,
+
+    /**Configure permissions for all Open Ticket commands & actions. */
+    permissions:ODJsonConfig_DefaultSystemPermissions,
+
+    /**Configure dm & log messages for all Open Ticket commands & actions. */
+    messages:ODJsonConfig_DefaultSystemMessages
+}
+
+/**## ODJsonConfig_DefaultGeneralData `interface`
+ * All contents of the `general.json` config file.
+ */
+export interface ODJsonConfig_DefaultGeneralData {
+    /**This object contains a few URLs and metadata for the config. */
+    _INFO:ODJsonConfig_DefaultInfo,
+    
+    /**The token of the bot. (Empty when using `tokenFromENV`) */
+    token:string,
+    /**Use the token from the `.env` file as `TOKEN=xxxxx`. */
+    tokenFromENV:boolean,
+
+    /**The main (hex) color used in almost every embed in the bot. */
+    mainColor:discord.ColorResolvable,
+    /**The language to use. Can be the id of the language or the id without the prefix when using `opendiscord:...`. */
+    language:string,
+    /**The prefix used in all text-commands. */
+    prefix:string,
+    /**The id of the discord server where the bot is used. */
+    serverId:string,
+    /**A list of discord role ids which are able to access all tickets & commands. */
+    globalAdmins:string[],
+
+    /**Are slash commands enabled? */
+    slashCommands:boolean,
+    /**Are text commands enabled? */
+    textCommands:boolean,
+
+    /**All settings related to the status of the bot. */
+    status:ODJsonConfig_DefaultStatusType,
+
+    /**All settings related to the ticket system. */
+    system:ODJsonConfig_DefaultSystem
+}
+
 /**## ODJsonConfig_DefaultGeneral `default_class`
  * This is a special class that adds type definitions & typescript to the ODJsonConfig class.
  * It doesn't add any extra features!
@@ -84,137 +248,7 @@ export type ODJsonConfig_DefaultCmdPermissionSettingsType = "admin"|"everyone"|"
  * This default class is made for the `general.json` config!
  */
 export class ODJsonConfig_DefaultGeneral extends ODJsonConfig {
-    declare data: {
-        /**This object contains a few URLs and metadata for the config. */
-        _INFO:{
-            /**A link to the Open Ticket documentation. */
-            support:string,
-            /**A link to the DJdj Development discord server. */
-            discord:string,
-            /**The version of Open Ticket this config is compatible with. */
-            version:string
-        },
-        
-        /**The token of the bot. (Empty when using `tokenFromENV`) */
-        token:string,
-        /**Use the token from the `.env` file as `TOKEN=xxxxx`. */
-        tokenFromENV:boolean,
-    
-        /**The main (hex) color used in almost every embed in the bot. */
-        mainColor:discord.ColorResolvable,
-        /**The language to use. Can be the id of the language or the id without the prefix when using `opendiscord:...`. */
-        language:string,
-        /**The prefix used in all text-commands. */
-        prefix:string,
-        /**The id of the discord server where the bot is used. */
-        serverId:string,
-        /**A list of discord role ids which are able to access all tickets & commands. */
-        globalAdmins:string[],
-
-        /**Are slash commands enabled? */
-        slashCommands:boolean,
-        /**Are text commands enabled? */
-        textCommands:boolean,
-
-        /**All settings related to the status of the bot. */
-        status:ODJsonConfig_DefaultStatusType,
-
-        /**All settings related to the ticket system. */
-        system:{
-            /**Remove all participants (except admins) from the ticket when it's closed. */
-            removeParticipantsOnClose:boolean,
-            /**Reply with an ephemeral message when a ticket is created. */
-            replyOnTicketCreation:boolean,
-            /**Reply with an ephemeral message when reaction roles are changed. */
-            replyOnReactionRole:boolean,
-            /**Use a translated config checker in the console. */
-            useTranslatedConfigChecker:boolean,
-            /**Prefer slash-commands over text-commands when displaying them in menu's and messages. */
-            preferSlashOverText:boolean,
-            /**Reply with "unknown command" when the prefix is used without a valid command. */
-            sendErrorOnUnknownCommand:boolean,
-            /**Display the question fields (in a ticket message) in code blocks. */
-            questionFieldsInCodeBlock:boolean,
-            /**Disable the (✅❌) buttons and directly run the action. */
-            disableVerifyBars:boolean,
-            /**Display error embeds/messages with red instead of the default bot color. */
-            useRedErrorEmbeds:boolean,
-            /**The emoji style used in the bot. This will affect all embeds, titles & messages in the bot. */
-            emojiStyle:"before"|"after"|"double"|"disabled",
-
-
-            /**Enable/disable the ticket claim & unclaim button in the ticket message. */
-            enableTicketClaimButtons:boolean,
-            /**Enable/disable the ticket close & re-open button in the ticket message. */
-            enableTicketCloseButtons:boolean,
-            /**Enable/disable the ticket pin & unpin button in the ticket message. */
-            enableTicketPinButtons:boolean,
-            /**Enable/disable the ticket delete button in the ticket message. */
-            enableTicketDeleteButtons:boolean,
-            /**Enable/disable the "with reason" button for all actions in the ticket message. */
-            enableTicketActionWithReason:boolean,
-            /**Enable/disable the delete without transcript feature (button & /delete command). */
-            enableDeleteWithoutTranscript:boolean,
-
-            /**All settings related to the log channel. */
-            logs:{
-                /**Enable logging. Individual actions should still be added via the `"system"."messages"..."logs"` */
-                enabled:boolean,
-                /**The channel to send logs to. */
-                channel:string
-            },
-            
-            /**All settings related to global ticket limits. */
-            limits:{
-                /**Enable global ticket limits. */
-                enabled:boolean,
-                /**The maximum amount of tickets that are allowed in the server at the same time. */
-                globalMaximum:number,
-                /**The maximum amount of tickets that a user is allowed to create at the same time. */
-                userMaximum:number
-            },
-
-            /**Configure permissions for all Open Ticket commands & actions. */
-            permissions:{
-                help:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                panel:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                ticket:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                close:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                delete:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                reopen:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                claim:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                unclaim:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                pin:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                unpin:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                move:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                rename:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                add:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                remove:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                blacklist:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                stats:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                clear:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                autoclose:ODJsonConfig_DefaultCmdPermissionSettingsType,
-                autodelete:ODJsonConfig_DefaultCmdPermissionSettingsType
-            },
-
-            /**Configure dm & log messages for all Open Ticket commands & actions. */
-            messages:{
-                creation:ODJsonConfig_DefaultMessageSettingsType,
-                closing:ODJsonConfig_DefaultMessageSettingsType,
-                deleting:ODJsonConfig_DefaultMessageSettingsType,
-                reopening:ODJsonConfig_DefaultMessageSettingsType,
-                claiming:ODJsonConfig_DefaultMessageSettingsType,
-                pinning:ODJsonConfig_DefaultMessageSettingsType,
-                adding:ODJsonConfig_DefaultMessageSettingsType,
-                removing:ODJsonConfig_DefaultMessageSettingsType,
-                renaming:ODJsonConfig_DefaultMessageSettingsType,
-                moving:ODJsonConfig_DefaultMessageSettingsType,
-                blacklisting:ODJsonConfig_DefaultMessageSettingsType,
-                roleAdding:ODJsonConfig_DefaultMessageSettingsType,
-                roleRemoving:ODJsonConfig_DefaultMessageSettingsType
-            }
-        }
-    }
+    declare data: ODJsonConfig_DefaultGeneralData
 }
 
 /**## ODJsonConfig_DefaultOptionType `interface`
