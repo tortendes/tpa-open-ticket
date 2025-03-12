@@ -1,9 +1,9 @@
 # Docker File for Open Ticket v4
-# Use the official Node.js 18 image from Docker Hub
-FROM node:18-alpine
+# Use the official Node.js 20 image from Docker Hub
+FROM node:20-alpine
 
-# Set a different working directory inside the container
-WORKDIR /usr/src/openticket
+# Set pterodactyl working directory inside the container
+WORKDIR /home/container
 
 # Copy package.json and package-lock.json into the container
 COPY package*.json ./

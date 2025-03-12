@@ -4,6 +4,8 @@ services:
   openticket:
     build: .
     volumes:
-      - .:/app
-    environment: NODE_ENV=production
-    restart: unless-stopped
+      - openticket:/home/container
+    restart: no
+    container_name: open-ticket
+volumes:
+  openticket:
