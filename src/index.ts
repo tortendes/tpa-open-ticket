@@ -282,7 +282,7 @@ const main = async () => {
     if (opendiscord.checkers.lastResult && !opendiscord.checkers.lastResult.valid && !(disableCheckerFlag ? disableCheckerFlag.value : false)){
         await opendiscord.events.get("onCheckerQuit").emit([opendiscord.checkers])
         if (opendiscord.defaults.getDefault("checkerQuit")){
-            process.exit(0)
+            process.exit(1)
             //there is no afterCheckerQuitted event :)
         }
     }
@@ -366,7 +366,7 @@ const main = async () => {
                 opendiscord.log("The bot isn't a member of the server provided in the config!","error")
                 opendiscord.log("Please invite your bot to the server!","info")
                 console.log("\n")
-                process.exit(0)
+                process.exit(1)
             }
             //throw if bot doesn't have permissions in main server
             if (!client.checkGuildPerms(mainServer)){
@@ -374,7 +374,7 @@ const main = async () => {
                 opendiscord.log("The bot doesn't have the correct permissions in the server provided in the config!","error")
                 opendiscord.log("Please give the bot \"Administrator\" permissions or visit the documentation!","info")
                 console.log("\n")
-                process.exit(0)
+                process.exit(1)
             }
             if (opendiscord.defaults.getDefault("clientMultiGuildWarning")){
                 //warn if bot is in multiple servers

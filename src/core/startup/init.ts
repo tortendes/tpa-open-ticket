@@ -4,7 +4,7 @@ let tempErrors: string[] = []
 const tempError = () => {
     if (tempErrors.length > 0){
         console.log("\n\n==============================\n[OPEN TICKET ERROR]: "+tempErrors.join("\n[OPEN TICKET ERROR]: ")+"\n==============================\n\n")
-        process.exit(0)
+        process.exit(1)
     }
     tempErrors = []
 }
