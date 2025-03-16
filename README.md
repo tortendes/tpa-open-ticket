@@ -27,6 +27,7 @@ You're also able to customise every little aspect of the bot! From embeds to tra
 > The translation count may not be accurate!
 
 ### 📌 Features
+- **🦇 pterodactyl support** - Open Ticket works perfect on Pterodactyl based panels! [(Download official eggs)](.eggs/README.md)
 - **💩 no bloat** - Your Open Ticket bot doesn't contain any form of bloat or credits!
 - **🔒 tested & secure** - Open Ticket has been tested by thousands of servers and is very secure!
 - **📈 scalable** - Open Ticket is made to handle huge servers! (Already tested in **servers with 100k members**)
