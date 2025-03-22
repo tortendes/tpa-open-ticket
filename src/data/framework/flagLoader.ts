@@ -3,7 +3,7 @@ import {opendiscord, api, utilities} from "../../index"
 export const loadAllFlags = async () => {
     opendiscord.flags.add(new api.ODFlag("opendiscord:no-migration","No Migration","Disable Open Ticket data migration on update!","--no-migration",["-nm"]))
     opendiscord.flags.add(new api.ODFlag("opendiscord:dev-config","Developer Config","Use the configs in /devconfig/ instead of /config/!","--dev-config",["-dc"]))
-    opendiscord.flags.add(new api.ODFlag("opendiscord:dev-database","Developer Database","Use the databases in /devdatabase/ instead of /database/!","--dev-database",["-nd"]))
+    opendiscord.flags.add(new api.ODFlag("opendiscord:dev-database","Developer Database","Use the databases in /devdatabase/ instead of /database/!","--dev-database",["-dd"]))
     opendiscord.flags.add(new api.ODFlag("opendiscord:debug","Debug Mode","Couldn't you find the error? Try to check this out!","--debug",["-d"]))
     opendiscord.flags.add(new api.ODFlag("opendiscord:crash","Crash On Error","Crash the bot on an unknown error!","--crash",["-cr"]))
     opendiscord.flags.add(new api.ODFlag("opendiscord:no-transcripts","No HTML Transcripts","Disable uploading HTML transcripts (for debugging)","--no-transcripts",["-nt"]))
