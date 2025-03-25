@@ -192,13 +192,13 @@ This is the main team working on Open Ticket. Don't forget to check their profil
 |🇪🇪 Estonian           |iamnotmega                |🔵 Up To Date (ChatGPT)      |
 |🇫🇮 Finnish            |iamnotmega                |🔵 Up To Date (ChatGPT)      |
 |🇷🇺 Russian            |/                         |🔴 Missing                   |
-|🇳🇴 Norwegian          |NoOneNook / ItsNook_     |🟢 Up To Date                |
+|🇳🇴 Norwegian          |NoOneNook                 |🟢 Up To Date                |
 |🇱🇻 Latvian            |/                         |🔴 Missing                   |
 |🇯🇵 Japanese           |/                         |🔴 Missing                   |
 |🇰🇷 Korean             |/                         |🔴 Missing                   |
 |🇨🇳 Simplified Chinese |/                         |🔴 Missing                   |
 |🇨🇳 Traditional Chinese|/                         |🔴 Missing                   |
-|🇸🇪 Swedish            |NoOneNook / ItsNook_       |🟢 Up To Date                |
+|🇸🇪 Swedish            |NoOneNook                 |🟢 Up To Date                |
 |🇻🇳 Vietnamese         |/                         |🔴 Missing                   |
 |🇸🇮 Slovenian          |/                         |🔴 Missing                   |
 |🇬🇷 Greek              |/                         |🔴 Missing                   |
