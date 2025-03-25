@@ -31,10 +31,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/DJj123dj/open-ticket.git"
+        "url": "git+https://github.com/open-discord-bots/open-ticket.git"
     },
     "bugs": {
-        "url": "https://github.com/DJj123dj/open-ticket/issues",
+        "url": "https://github.com/open-discord-bots/open-ticket/issues",
         "email": "support@dj-dj.be"
     },
     "homepage": "https://openticket.dj-dj.be",

@@ -1,7 +1,7 @@
 # Contributing Guidelines
 <img src="https://apis.dj-dj.be/cdn/openticket/logo.png" alt="Open Ticket Logo" width="500px">
 
-[![discord](https://img.shields.io/badge/discord-support%20server-5865F2.svg?style=flat-square&logo=discord)](https://discord.com/invite/26vT9wt3n3)  [![version](https://img.shields.io/badge/version-4.0.0-brightgreen.svg?style=flat-square)](https://github.com/DJj123dj/open-ticket/releases/tag/v4.0.0)  [![Sponsor DJj123dj](https://img.shields.io/badge/sponsor-DJj123dj-ea4aaa?style=flat-square&logo=githubsponsors)](https://github.com/sponsors/DJj123dj)
+[![discord](https://img.shields.io/badge/discord-support%20server-5865F2.svg?style=flat-square&logo=discord)](https://discord.com/invite/26vT9wt3n3)  [![version](https://img.shields.io/badge/version-4.0.0-brightgreen.svg?style=flat-square)](https://github.com/open-discord-bots/open-ticket/releases/tag/v4.0.0)  [![Sponsor DJj123dj](https://img.shields.io/badge/sponsor-DJj123dj-ea4aaa?style=flat-square&logo=githubsponsors)](https://github.com/sponsors/DJj123dj)
 
 These are the Contributing Guidelines of Open Ticket!<br>
 Here you can find everything you need to know about contributing to Open Ticket.<br>
@@ -36,7 +36,7 @@ Metadata can be found in the `_TRANSLATION` variable.
 #### Step 4: Uploading
 1. When adding a new language, please mention @DJj123dj. He will add the code required for the language to work.
 2. There are currently 3 ways of uploading translations:
-   -  Create a pull request to the [__`dev` branch!__](https://github.com/DJj123dj/open-ticket/tree/dev)
+   -  Create a pull request to the [__`dev` branch!__](https://github.com/open-discord-bots/open-ticket/tree/dev)
    -  Create a ticket in our [discord server](https://discord.dj-dj.be)!
    -  Send a DM to @DJj123dj on discord!
 3. Now you'll need to wait until the next Open Ticket version for it to be added.
