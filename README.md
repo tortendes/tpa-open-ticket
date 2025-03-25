@@ -191,7 +191,7 @@ This is the main team working on Open Ticket. Don't forget to check their profil
 |🇵🇱 Polish             |danoglez                  |🟢 Up To Date                |
 |🇪🇪 Estonian           |iamnotmega                |🔵 Up To Date (ChatGPT)      |
 |🇫🇮 Finnish            |iamnotmega                |🔵 Up To Date (ChatGPT)      |
-|🇷🇺 Russian            |/                         |🔴 Missing                   |
+|🇷🇺 Russian            |NoOneNook                 |🟢 Up To Date                |
 |🇳🇴 Norwegian          |NoOneNook                 |🟢 Up To Date                |
 |🇱🇻 Latvian            |NoOneNook                 |🟢 Up To Date                |
 |🇯🇵 Japanese           |/                         |🔴 Missing                   |
