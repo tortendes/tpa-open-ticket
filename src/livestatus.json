@@ -1,0 +1,62 @@
+[
+    {
+        "message":{
+            "title":"Open Ticket Beta",
+            "titleColor":"red",
+            "description":"Hi there! You're using a beta version of the bot! Please report all bugs and errors to our discord server!",
+            "descriptionColor":"normal"
+        },
+        "active":{
+            "versions":["4.0.0"],
+            "languages":[],
+            "allLanguages":true,
+            "usingPlugins":true,
+            "notUsingPlugins":true,
+            "usingSlashCommands":true,
+            "notUsingSlashCommands":true,
+            "notUsingTranscripts":true,
+            "usingTextTranscripts":true,
+            "usingHtmlTranscripts":true
+        }
+    },
+    {
+        "message":{
+            "title":"Documentation",
+            "titleColor":"blue",
+            "description":"There is currently no documentation available yet for OT v4 beta!",
+            "descriptionColor":"normal"
+        },
+        "active":{
+            "versions":["4.0.0"],
+            "languages":[],
+            "allLanguages":true,
+            "usingPlugins":true,
+            "notUsingPlugins":true,
+            "usingSlashCommands":true,
+            "notUsingSlashCommands":true,
+            "notUsingTranscripts":true,
+            "usingTextTranscripts":true,
+            "usingHtmlTranscripts":true
+        }
+    },
+    {
+        "message":{
+            "title":"Support Us",
+            "titleColor":"magenta",
+            "description":"Support our development at https://github.com/sponsors/DJj123dj/",
+            "descriptionColor":"normal"
+        },
+        "active":{
+            "versions":["4.0.0"],
+            "languages":[],
+            "allLanguages":true,
+            "usingPlugins":true,
+            "notUsingPlugins":true,
+            "usingSlashCommands":true,
+            "notUsingSlashCommands":true,
+            "notUsingTranscripts":true,
+            "usingTextTranscripts":true,
+            "usingHtmlTranscripts":true
+        }
+    }
+]

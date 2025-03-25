@@ -1,40 +1,49 @@
 # Security Policy
+<img src="https://apis.dj-dj.be/cdn/openticket/logo.png" alt="Open Ticket Logo" width="500px">
 
-## Supported Versions
-Below, you can find a list with the status of every open ticket version. This list will change every update!
+[![discord](https://img.shields.io/badge/discord-support%20server-5865F2.svg?style=flat-square&logo=discord)](https://discord.com/invite/26vT9wt3n3)  [![version](https://img.shields.io/badge/version-4.0.0-brightgreen.svg?style=flat-square)](https://github.com/open-discord-bots/open-ticket/releases/tag/v4.0.0)  [![Sponsor DJj123dj](https://img.shields.io/badge/sponsor-DJj123dj-ea4aaa?style=flat-square&logo=githubsponsors)](https://github.com/sponsors/DJj123dj)
 
-- ✅ Supported **(bugs, errors, discord support, documentation, html transcripts)**
-- 🟧 Deprecated / Partially Supported **(discord support, documentation, html transcripts)**
-- ❌ Fully Deprecated / Not Supported **(sometimes documentation)**
+This is the Security Policy of Open Ticket!<br>
+Here you can find a list of all supported & deprecated versions of the bot.<br>
+You will also find some guidelines about how to report vulnerabilities, bugs & errors.
 
-| Version   | Supported | Until                       |
-|-----------|-----------|-----------------------------|
-| 3.5.9     | ✅        |                             |
-| 3.5.7     | ✅        | September 2024              |
-| 3.5.6     | 🟧        | September 2024              |
-| < 3.5.6   | ❌        |                             |
+### 📦 Supported Versions
+Below, you can find a list with the status of every Open Ticket version.<br>
+This list will be updated on every release.
 
-## Reporting a Vulnerability
+- 🟦 Early Access **(ideas, bugs, support, html transcripts)**
+- ✅ Supported **(features, bugs, support, docs, html transcripts)**
+- 🚧 Maintenance **(support, docs, html transcripts)**
+- 🟧 Deprecated **(docs)**
+- ❌ Fully Deprecated
 
-You can report Vulnerabilities, Errors & Bugs using one of the methods below:
-- Create an issue on github
-- Create a ticket in our [discord server](https://discord.dj-dj.be)
-- Report the bug in DM on discord (djj123dj)
-- Email [support@dj-dj.be](mailto:support@dj-dj.be)
+| Version    | Supported | Notes                          |
+|------------|-----------|--------------------------------|
+| 4.0.0-beta | 🟦        | For v4.0.0 Full Release        |
+| 3.5.8      | ✅        | Supported until October 2024   |
+| 3.5.7      | ✅        | Supported until September 2024 |
+| 3.5.6      | 🟧        | Documentation Only             |
+| < 3.5.6    | 🟧        | Documentation Only             |
+| < 3.5.0    | ❌        |                                |
 
-While reporting your problem, please be clear about what the problem is.
-We would like to know the issue in as much detail as possible.
+### 🕷️ Reporting Vulnerabilities
+You can report vulnerabilities, errors & bugs using one of the following methods:
+- Create an issue on GitHub!
+- Create a ticket in our [discord server](https://discord.dj-dj.be)!
+- Message @DJj123dj in DM on discord!
+- Send an E-mail to [support@dj-dj.be](mailto:support@dj-dj.be)!
+
+When you report a problem, please **give a small description** about what & how it happend.<br>
+Try to explain the issue in as much detail as possible.
+
 If possible, try to provide screenshots!
-The `openticketdebug.txt` file would also be handy to upload!<br>
-**Always specify the version of open ticket that you are working with and if you have modified it or not!**
 
-## Contributing
-Visit [Contributing.md](/.github/CONTRIBUTING.md) for rules about translating & adding features!
+### Please upload the `otdebug.txt` file together with your bug report!
 
-<br>
-SECURITY POLICY - Last updated: 2/8/2024<br>
-© DJdj Development<br><br>
-Website: https://www.dj-dj.be <br>
-Discord: https://discord.dj-dj.be <br>
-Email: support@dj-dj.be <br>
-Open Ticket website: https://openticket.dj-dj.be
+---
+<img src="https://apis.dj-dj.be/cdn/openticket/logo.png" alt="Open Ticket Logo" width="170px">
+
+**Security Policy**<br>
+[changelog](https://otgithub.dj-dj.be/releases) - [documentation](https://otdocs.dj-dj.be) - [tutorial](https://www.youtube.com/watch?v=2jK9kAf6ASU) - [website](https://openticket.dj-dj.be) - [discord](https://discord.dj-dj.be)<br>
+
+© 2025 - [DJdj Development](https://www.dj-dj.be) - [Terms](https://www.dj-dj.be/terms#terms) - [Privacy Policy](https://www.dj-dj.be/terms#privacy)
