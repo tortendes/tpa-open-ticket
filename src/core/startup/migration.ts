@@ -10,5 +10,7 @@ export const migrations = [
         //MIGRATE AFTER INITIAL STARTUP (plugins, flags, config, database, language, ... => loaded)
 
         //nothing needs to be transferred :)
-    })
+    }),
+    //MIGRATE TO v4.0.1 (nothing)
+    new utilities.ODVersionMigration(api.ODVersion.fromString("opendiscord:version","v4.0.0"),async () => {},() => {})
 ]
