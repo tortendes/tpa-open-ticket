@@ -191,14 +191,14 @@ This is the main team working on Open Ticket. Don't forget to check their profil
 |🇵🇱 Polish             |danoglez                  |🟢 Up To Date                |
 |🇪🇪 Estonian           |iamnotmega                |🔵 Up To Date (ChatGPT)      |
 |🇫🇮 Finnish            |iamnotmega                |🔵 Up To Date (ChatGPT)      |
-|🇷🇺 Russian            |/                         |🔴 Missing                   |
-|🇳🇴 Norwegian          |/                         |🔴 Missing                   |
-|🇱🇻 Latvian            |/                         |🔴 Missing                   |
+|🇷🇺 Russian            |NoOneNook                 |🔵 Up To Date (AI)           |
+|🇳🇴 Norwegian          |NoOneNook                 |🟢 Up To Date                |
+|🇱🇻 Latvian            |NoOneNook                 |🔵 Up To Date (AI)           |
 |🇯🇵 Japanese           |/                         |🔴 Missing                   |
 |🇰🇷 Korean             |/                         |🔴 Missing                   |
 |🇨🇳 Simplified Chinese |/                         |🔴 Missing                   |
 |🇨🇳 Traditional Chinese|/                         |🔴 Missing                   |
-|🇸🇪 Swedish            |/                         |🔴 Missing                   |
+|🇸🇪 Swedish            |NoOneNook                 |🟢 Up To Date                |
 |🇻🇳 Vietnamese         |/                         |🔴 Missing                   |
 |🇸🇮 Slovenian          |/                         |🔴 Missing                   |
 |🇬🇷 Greek              |/                         |🔴 Missing                   |
