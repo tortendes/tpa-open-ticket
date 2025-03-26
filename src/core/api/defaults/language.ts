@@ -467,6 +467,10 @@ export interface ODLanguageManagerIds_Default {
     "opendiscord:hindi":ODLanguage,
     "opendiscord:lithuanian":ODLanguage,
     "opendiscord:polish":ODLanguage,
+    "opendiscord:latvian":ODLanguage,
+    "opendiscord:norwegian":ODLanguage,
+    "opendiscord:russian":ODLanguage,
+    "opendiscord:swedish":ODLanguage,
     //ADD NEW LANGUAGES HERE!!!
 }
 

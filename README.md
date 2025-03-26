@@ -17,7 +17,7 @@
 
 <p align="center">
 Open Ticket is the most advanced & customisable discord ticket bot that you will ever find! You can customise up to 300+ variables! This includes <code>Html Transcripts</code>, <code>Advanced Plugins</code>, <code>Custom Embeds</code>, <code>Questions/Modals</code>, <code>Stats</code> & more!
-You're also able to customise every little aspect of the bot! From embeds to transcripts. Open Ticket is also translated in more than <code>22 Languages</code>! If you need any help, feel free to join our <a href="https://discord.dj-dj.be">discord server</a>!
+You're also able to customise every little aspect of the bot! From embeds to transcripts. Open Ticket is also translated in more than <code>26 Languages</code>! If you need any help, feel free to join our <a href="https://discord.dj-dj.be">discord server</a>!
 </p>
 
 <p align="center"><b>⭐️ Help us grow by giving a star! ⭐️</b></p>
@@ -29,7 +29,7 @@ You're also able to customise every little aspect of the bot! From embeds to tra
 - **📈 scalable** - Open Ticket is made to handle huge servers! (Already tested in **servers with 100k members**)
 - **📄 HTML transcripts** - Make use of the most customisable, beautiful and easy-to-use HTML Transcripts!
 - **✅ ticket actions** - Close, Reopen, Delete, Rename & Move all your tickets!
-- **🇬🇧 translation** - Open Ticket has been translated in more than **22 languages** by our community!
+- **🇬🇧 translation** - Open Ticket has been translated in more than **26 languages** by our community!
 - **🎨 customisation** - Open Ticket has been created around customisation, everything can be customised!
 - **🖥️ interactions** - The bot has full support for Buttons, Dropdowns, Slash Commands and Modals!
 - **∞ unlimited** - Create an infinite amount of tickets & panels!
@@ -189,16 +189,16 @@ This is the main team working on Open Ticket. Don't forget to check their profil
 |🇮🇳 Hindi              |an_developer              |🟢 Up To Date                |
 |🇱🇹 Lithuanian         |tsgindrius                |🟢 Up To Date                |
 |🇵🇱 Polish             |danoglez                  |🟢 Up To Date                |
-|🇪🇪 Estonian           |iamnotmega                |🔵 Up To Date (ChatGPT)      |
-|🇫🇮 Finnish            |iamnotmega                |🔵 Up To Date (ChatGPT)      |
-|🇷🇺 Russian            |NoOneNook                 |🔵 Up To Date (AI)           |
 |🇳🇴 Norwegian          |NoOneNook                 |🟢 Up To Date                |
+|🇸🇪 Swedish            |NoOneNook                 |🟢 Up To Date                |
+|🇪🇪 Estonian           |iamnotmega                |🔵 Up To Date (AI)           |
+|🇫🇮 Finnish            |iamnotmega                |🔵 Up To Date (AI)           |
+|🇷🇺 Russian            |NoOneNook                 |🔵 Up To Date (AI)           |
 |🇱🇻 Latvian            |NoOneNook                 |🔵 Up To Date (AI)           |
 |🇯🇵 Japanese           |/                         |🔴 Missing                   |
 |🇰🇷 Korean             |/                         |🔴 Missing                   |
 |🇨🇳 Simplified Chinese |/                         |🔴 Missing                   |
 |🇨🇳 Traditional Chinese|/                         |🔴 Missing                   |
-|🇸🇪 Swedish            |NoOneNook                 |🟢 Up To Date                |
 |🇻🇳 Vietnamese         |/                         |🔴 Missing                   |
 |🇸🇮 Slovenian          |/                         |🔴 Missing                   |
 |🇬🇷 Greek              |/                         |🔴 Missing                   |
