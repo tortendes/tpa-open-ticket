@@ -6,14 +6,12 @@ You can choose which type of tutorial you want to make. You can create a quick s
 You are not required to talk in the video, but make sure it has some kind of subtitles instead.
 
 ### 📄 Requirements
-- 📌 At least 2k subscribers!
-- 📌 A little bit of channel activity! *(minimum 2 uploads/month)*
-- 📌 Video length of at least 3 minutes!
-- 📌 Provide a clear link to the Open Ticket repository!
-- 📌 Recommended language is English!
-- 📌 Recommended platform is YouTube!
-- 📌 Must be for the latest version of Open Ticket!
-- 📌 **(OPTIONAL)** Speech in the video *(AI is allowed)*
+- 📌 Video length of at least 2 minutes.
+- 📌 Provide a link to the Open Ticket repository in the description of the video.
+- 📌 Please use the latest version of Open Ticket available at the time of making the video.
+- 📌 **(Optional)** Recommended language is English.
+- 📌 **(Optional)** Recommended platform is YouTube!
+- 📌 **(Optional)** Speech in the video *(AI is allowed)*
 
 
 ### 🎁 Rewards
