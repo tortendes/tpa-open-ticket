@@ -484,7 +484,7 @@ const loadAutoCode = () => {
         })
     }))
 
-    //TICKET ANTI BUSY
+    //TICKET ANTI BUSY (+ sync version of tickets with latest OT version in database)
     opendiscord.code.add(new api.ODCode("opendiscord:ticket-anti-busy",-1,() => {
         for (const ticket of opendiscord.tickets.getAll()){
             //free tickets from corruption due to opendiscord:busy variable
