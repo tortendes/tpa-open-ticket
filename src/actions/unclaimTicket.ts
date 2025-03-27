@@ -22,54 +22,56 @@ export const registerActions = async () => {
             ticket.get("opendiscord:busy").value = true
 
             //update category
-            const channelCategory = ticket.option.get("opendiscord:channel-category").value
-            const channelBackupCategory = ticket.option.get("opendiscord:channel-category-backup").value
-            if (channelCategory !== ""){
-                //category enabled
-                try {
-                    const normalCategory = await opendiscord.client.fetchGuildCategoryChannel(guild,channelCategory)
-                    if (!normalCategory){
-                        //default category was not found
-                        opendiscord.log("Ticket Unclaiming Error: Unable to find category! #1","error",[
-                            {key:"categoryid",value:channelCategory},
-                            {key:"backup",value:"false"}
-                        ])
-                    }else{
-                        //default category was found
-                        if (normalCategory.children.cache.size >= 49 && channelBackupCategory != ""){
-                            //use backup category
-                            const backupCategory = await opendiscord.client.fetchGuildCategoryChannel(guild,channelBackupCategory)
-                            if (!backupCategory){
-                                //default category was not found
-                                opendiscord.log("Ticket Unclaiming Error: Unable to find category! #2","error",[
-                                    {key:"categoryid",value:channelBackupCategory},
-                                    {key:"backup",value:"true"}
-                                ])
-                            }else{
-                                //use backup category
-                                channel.setParent(backupCategory,{lockPermissions:false})
-                                ticket.get("opendiscord:category-mode").value = "backup"
-                                ticket.get("opendiscord:category").value = backupCategory.id
-                            }
+            if (params.allowCategoryChange){
+                const channelCategory = ticket.option.get("opendiscord:channel-category").value
+                const channelBackupCategory = ticket.option.get("opendiscord:channel-category-backup").value
+                if (channelCategory !== ""){
+                    //category enabled
+                    try {
+                        const normalCategory = await opendiscord.client.fetchGuildCategoryChannel(guild,channelCategory)
+                        if (!normalCategory){
+                            //default category was not found
+                            opendiscord.log("Ticket Unclaiming Error: Unable to find category! #1","error",[
+                                {key:"categoryid",value:channelCategory},
+                                {key:"backup",value:"false"}
+                            ])
                         }else{
-                            //use default category
-                            channel.setParent(normalCategory,{lockPermissions:false})
-                            ticket.get("opendiscord:category-mode").value = "normal"
-                            ticket.get("opendiscord:category").value = normalCategory.id
+                            //default category was found
+                            if (normalCategory.children.cache.size >= 49 && channelBackupCategory != ""){
+                                //use backup category
+                                const backupCategory = await opendiscord.client.fetchGuildCategoryChannel(guild,channelBackupCategory)
+                                if (!backupCategory){
+                                    //default category was not found
+                                    opendiscord.log("Ticket Unclaiming Error: Unable to find category! #2","error",[
+                                        {key:"categoryid",value:channelBackupCategory},
+                                        {key:"backup",value:"true"}
+                                    ])
+                                }else{
+                                    //use backup category
+                                    channel.setParent(backupCategory,{lockPermissions:false})
+                                    ticket.get("opendiscord:category-mode").value = "backup"
+                                    ticket.get("opendiscord:category").value = backupCategory.id
+                                }
+                            }else{
+                                //use default category
+                                channel.setParent(normalCategory,{lockPermissions:false})
+                                ticket.get("opendiscord:category-mode").value = "normal"
+                                ticket.get("opendiscord:category").value = normalCategory.id
+                            }
                         }
+                        
+                    }catch(e){
+                        opendiscord.log("Unable to move ticket to 'unclaimed category'!","error",[
+                            {key:"channel",value:"#"+channel.name},
+                            {key:"channelid",value:channel.id,hidden:true}
+                        ])
+                        opendiscord.debugfile.writeErrorMessage(new api.ODError(e,"uncaughtException"))
                     }
-                    
-                }catch(e){
-                    opendiscord.log("Unable to move ticket to 'unclaimed category'!","error",[
-                        {key:"channel",value:"#"+channel.name},
-                        {key:"channelid",value:channel.id,hidden:true}
-                    ])
-                    opendiscord.debugfile.writeErrorMessage(new api.ODError(e,"uncaughtException"))
+                }else{
+                    channel.setParent(null,{lockPermissions:false})
+                    ticket.get("opendiscord:category-mode").value = null
+                    ticket.get("opendiscord:category").value = null
                 }
-            }else{
-                channel.setParent(null,{lockPermissions:false})
-                ticket.get("opendiscord:category-mode").value = null
-                ticket.get("opendiscord:category").value = null
             }
 
             //update ticket message

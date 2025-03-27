@@ -26,20 +26,22 @@ export const registerActions = async () => {
             await opendiscord.stats.get("opendiscord:user").setStat("opendiscord:tickets-claimed",user.id,1,"increase")
 
             //update category
-            const rawClaimCategory = ticket.option.get("opendiscord:channel-categories-claimed").value.find((c) => c.user == user.id)
-            const claimCategory = (rawClaimCategory) ? rawClaimCategory.category : null
-            if (claimCategory){
-                try {
-                    channel.setParent(claimCategory,{lockPermissions:false})
-                    ticket.get("opendiscord:category-mode").value = "claimed"
-                    ticket.get("opendiscord:category").value = claimCategory
-                }catch(e){
-                    opendiscord.log("Unable to move ticket to 'claimed category'!","error",[
-                        {key:"channel",value:"#"+channel.name},
-                        {key:"channelid",value:channel.id,hidden:true},
-                        {key:"categoryid",value:claimCategory}
-                    ])
-                    opendiscord.debugfile.writeErrorMessage(new api.ODError(e,"uncaughtException"))
+            if (params.allowCategoryChange){
+                const rawClaimCategory = ticket.option.get("opendiscord:channel-categories-claimed").value.find((c) => c.user == user.id)
+                const claimCategory = (rawClaimCategory) ? rawClaimCategory.category : null
+                if (claimCategory){
+                    try {
+                        channel.setParent(claimCategory,{lockPermissions:false})
+                        ticket.get("opendiscord:category-mode").value = "claimed"
+                        ticket.get("opendiscord:category").value = claimCategory
+                    }catch(e){
+                        opendiscord.log("Unable to move ticket to 'claimed category'!","error",[
+                            {key:"channel",value:"#"+channel.name},
+                            {key:"channelid",value:channel.id,hidden:true},
+                            {key:"categoryid",value:claimCategory}
+                        ])
+                        opendiscord.debugfile.writeErrorMessage(new api.ODError(e,"uncaughtException"))
+                    }
                 }
             }
 
