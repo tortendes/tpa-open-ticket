@@ -52,6 +52,7 @@ export class ODDatabaseManager_Default extends ODDatabaseManager {
  * It's used to generate typescript declarations for this class.
  */
 export interface ODFormattedJsonDatabaseIds_DefaultGlobal {
+    "opendiscord:panel-message":string,
     "opendiscord:panel-update":string,
     "opendiscord:option-suffix-counter":number,
     "opendiscord:option-suffix-history":string[],

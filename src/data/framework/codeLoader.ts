@@ -73,7 +73,7 @@ export const loadDatabaseCleanersCode = async () => {
         const validPanels: string[] = []
 
         //check global database for valid panel embeds
-        for (const panel of (await globalDatabase.getCategory("opendiscord:panel-update") ?? [])){
+        for (const panel of (await globalDatabase.getCategory("opendiscord:panel-message") ?? [])){
             if (!validPanels.includes(panel.key)){
                 try{
                     const splittedId = panel.key.split("_")
@@ -84,15 +84,17 @@ export const loadDatabaseCleanersCode = async () => {
         }
 
         //remove all unused panels
-        for (const panel of (await globalDatabase.getCategory("opendiscord:panel-update") ?? [])){
+        for (const panel of (await globalDatabase.getCategory("opendiscord:panel-message") ?? [])){
             if (!validPanels.includes(panel.key)){
+                await globalDatabase.delete("opendiscord:panel-message",panel.key)
                 await globalDatabase.delete("opendiscord:panel-update",panel.key)
             }
         }
 
         //delete panel from database on delete
         opendiscord.client.client.on("messageDelete",async (msg) => {
-            if (await globalDatabase.exists("opendiscord:panel-update",msg.channel.id+"_"+msg.id)){
+            if (await globalDatabase.exists("opendiscord:panel-message",msg.channel.id+"_"+msg.id)){
+                await globalDatabase.delete("opendiscord:panel-message",msg.channel.id+"_"+msg.id)
                 await globalDatabase.delete("opendiscord:panel-update",msg.channel.id+"_"+msg.id)
             }
         })

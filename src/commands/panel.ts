@@ -64,9 +64,12 @@ export const registerCommandResponders = async () => {
             await instance.reply(await opendiscord.builders.messages.getSafe("opendiscord:panel-ready").build(source,{guild,channel,user,panel}))
             const panelMessage = await instance.channel.send((await opendiscord.builders.messages.getSafe("opendiscord:panel").build(source,{guild,channel,user,panel})).message)
 
-            //add panel to database on auto-update
+            //add panel to database (this way, the bot knows where all panels are located)
+            const globalDatabase = opendiscord.databases.get("opendiscord:global")
+            await globalDatabase.set("opendiscord:panel-message",panelMessage.channel.id+"_"+panelMessage.id,panel.id.value)
+            
+            //add panel to database for auto-update
             if (instance.options.getBoolean("auto-update",false)){
-                const globalDatabase = opendiscord.databases.get("opendiscord:global")
                 await globalDatabase.set("opendiscord:panel-update",panelMessage.channel.id+"_"+panelMessage.id,panel.id.value)
             }
         }),

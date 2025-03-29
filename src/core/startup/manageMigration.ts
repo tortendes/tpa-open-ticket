@@ -5,7 +5,10 @@ export const loadVersionMigrationSystem = async () => {
     await preloadMigrationContext()
 
     const lastVersion = await isMigrationRequired()
+
+    //save last version to database (OR set to current version if no migration is required)
     opendiscord.versions.add(lastVersion ? lastVersion : api.ODVersion.fromString("opendiscord:last-version",opendiscord.versions.get("opendiscord:version").toString()))
+    
     if (lastVersion && !opendiscord.flags.get("opendiscord:no-migration").value){
         //MIGRATION IS REQUIRED
         opendiscord.log("Detected old data!","info")
