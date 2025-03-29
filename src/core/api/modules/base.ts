@@ -535,6 +535,52 @@ export class ODVersion extends ODManagerData {
             return (v.toString() === this.toString())
         })
     }
+    /**Check if this version is higher or equal to the provided `requirement`. */
+    min(requirement:string|ODVersion){
+        if (typeof requirement == "string") requirement = ODVersion.fromString("temp",requirement)
+        
+        //skip when primary version is higher or lower than current one.
+        if (this.primary < requirement.primary) return false
+        else if (this.primary > requirement.primary) return true
+
+        //skip when secondary version is higher or lower than current one.
+        if (this.secondary < requirement.secondary) return false
+        else if (this.secondary > requirement.secondary) return true
+
+        //skip when tertiary version is higher or lower than current one.
+        if (this.tertiary < requirement.tertiary) return false
+        else if (this.tertiary > requirement.tertiary) return true
+        
+        return true
+    }
+    /**Check if this version is lower or equal to the provided `requirement`. */
+    max(requirement:string|ODVersion){
+        if (typeof requirement == "string") requirement = ODVersion.fromString("temp",requirement)
+        
+        //skip when primary version is higher or lower than current one.
+        if (this.primary < requirement.primary) return true
+        else if (this.primary > requirement.primary) return false
+
+        //skip when secondary version is higher or lower than current one.
+        if (this.secondary < requirement.secondary) return true
+        else if (this.secondary > requirement.secondary) return false
+
+        //skip when tertiary version is higher or lower than current one.
+        if (this.tertiary < requirement.tertiary) return true
+        else if (this.tertiary > requirement.tertiary) return false
+        
+        return true
+    }
+    /**Check if this version is matches the major version (`vX.X`) of the provided `requirement`. */
+    major(requirement:string|ODVersion){
+        if (typeof requirement == "string") requirement = ODVersion.fromString("temp",requirement)
+        return (this.primary == requirement.primary && this.secondary == requirement.secondary)
+    }
+    /**Check if this version is matches the minor version (`vX.X.X`) of the provided `requirement`. */
+    minor(requirement:string|ODVersion){
+        if (typeof requirement == "string") requirement = ODVersion.fromString("temp",requirement)
+        return (this.primary == requirement.primary && this.secondary == requirement.secondary && this.tertiary == requirement.tertiary)
+    }
 }
 
 /**## ODHTTPGetRequest `class`
@@ -566,6 +612,8 @@ export class ODHTTPGetRequest {
         this.throwOnError = throwOnError
         const newConfig = config ?? {}
         newConfig.method = "GET"
+        if (newConfig.headers) Object.assign(newConfig.headers,{"User-Agent":"OpenDiscordBots-OpenTicket/4.0.1"})
+        else newConfig.headers = {"User-Agent":"OpenDiscordBots-OpenTicket/4.0.1"}
         this.config = newConfig
     }
 
@@ -619,6 +667,8 @@ export class ODHTTPPostRequest {
         this.throwOnError = throwOnError
         const newConfig = config ?? {}
         newConfig.method = "POST"
+        if (newConfig.headers) Object.assign(newConfig.headers,{"User-Agent":"OpenDiscordBots-OpenTicket/4.0.1"})
+        else newConfig.headers = {"User-Agent":"OpenDiscordBots-OpenTicket/4.0.1"}
         this.config = newConfig
     }
 
