@@ -28,10 +28,10 @@ You're also able to customise every little aspect of the bot! From embeds to tra
 ### 📌 Features
 - **🦇 pterodactyl support** - Open Ticket works perfect on Pterodactyl based panels! [(Download official eggs)](.eggs/README.md)
 - **💩 no bloat** - Your Open Ticket bot doesn't contain any form of bloat or credits!
-- **🔒 tested & secure** - Open Ticket has been tested by thousands of servers and is very secure!
+- **🔒 tested & secure** - Open Ticket has been battletested by thousands of servers and is very secure!
 - **📈 scalable** - Open Ticket is made to handle huge servers! (Already tested in **servers with 100k members**)
 - **📄 HTML transcripts** - Make use of the most customisable, beautiful and easy-to-use HTML Transcripts!
-- **✅ ticket actions** - Close, Reopen, Delete, Rename & Move all your tickets!
+- **✅ ticket actions** - Close, Reopen, Delete, Claim, Pin, Rename & Move all your tickets!
 - **🇬🇧 translation** - Open Ticket has been translated in more than **26 languages** by our community!
 - **🎨 customisation** - Open Ticket has been created around customisation, everything can be customised!
 - **🖥️ interactions** - The bot has full support for Buttons, Dropdowns, Slash Commands and Modals!
@@ -60,7 +60,7 @@ You're also able to customise every little aspect of the bot! From embeds to tra
 > ### 📦 Resources
 > Resources might not be accurate yet! *(because v4 is still in beta)*<br>
 > <a href="https://www.youtube.com/watch?v=2jK9kAf6ASU"><img src="https://apis.dj-dj.be/cdn/openticket/open-ticket-tutorial.png" alt="Open Ticket Tutorial" width="180px"></a>
-> <a href="https:/otdocs.dj-dj.be"><img src="https://apis.dj-dj.be/cdn/openticket/open-ticket-docs.png" alt="Open Ticket Docs" width="180px"></a>
+> <a href="https://otdocs.dj-dj.be"><img src="https://apis.dj-dj.be/cdn/openticket/open-ticket-docs.png" alt="Open Ticket Docs" width="180px"></a>
 > <a href="https://github.com/open-discord-bots/plugins"><img src="https://apis.dj-dj.be/cdn/openticket/open-ticket-plugins.png" alt="Open Ticket Plugins" width="180px"></a>
 
 ### ❤️ Sponsors
