@@ -12,7 +12,10 @@
 <a href="https://otdocs.dj-dj.be"><img alt="Open Ticket Documentation" src="https://img.shields.io/badge/discord.js-v14-CB3837.svg?style=flat-square&logo=npm"></img></a>
 <a href="https://github.com/open-discord-bots/open-ticket/blob/main/LICENSE"><img alt="Open Ticket License" src="https://img.shields.io/badge/license-GPL%203.0-important.svg?style=flat-square"></img></a>
 <a href="https://otdocs.dj-dj.be"><img alt="Open Ticket Stars" src="https://img.shields.io/github/stars/djj123dj/open-ticket?color=yellow&label=stars&logo=github&style=flat-square"></img></a>
+<br>
 <a href="https://github.com/sponsors/DJj123dj"><img alt="Sponsor DJj123dj" src="https://img.shields.io/badge/sponsor-DJj123dj-ea4aaa?style=flat-square&logo=githubsponsors"></img></a>
+<a href="https://hub.docker.com/repository/docker/djj123dj/open-ticket"><img alt="Open Ticket supports Docker!" src="https://img.shields.io/badge/docker-supported-2496ED?style=flat-square&logo=docker"></img></a>
+<a href=".eggs/README.md"><img alt="Open Ticket supports Pterodactyl Eggs!" src="https://img.shields.io/badge/pterodactyl-supported-10539F?style=flat-square&logo=pterodactyl"></img></a>
 </p>
 
 <p align="center">
