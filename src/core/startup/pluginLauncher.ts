@@ -14,8 +14,9 @@ export const loadAllPlugins = async () => {
     const plugins = fs.readdirSync("./plugins")
 
     //check & validate
-    plugins.forEach(async (p) => {
+    plugins.forEach((p) => {
         //prechecks
+        if (p === ".DS_Store") return //ignore MacOS DS_Store file
         if (!fs.statSync("./plugins/"+p).isDirectory()) return opendiscord.log("Plugin is not a directory, canceling plugin execution...","plugin",[
             {key:"plugin",value:"./plugins/"+p}
         ])

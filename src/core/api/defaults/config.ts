@@ -325,6 +325,31 @@ export interface ODJsonConfig_DefaultOptionPingSettingsType {
     custom:string[]
 }
 
+/**## ODJsonConfig_DefaultOptionTicketChannelType `interface`
+ * All settings related to the ticket channel itself in a ticket option.
+ */
+export interface ODJsonConfig_DefaultOptionTicketChannelType {
+    /**The prefix used in the name of this ticket channel. */
+    prefix:string,
+    /**The type of suffix used in the name of this ticket channel. */
+    suffix:"user-name"|"user-id"|"random-number"|"random-hex"|"counter-dynamic"|"counter-fixed",
+    /**An optional discord category id to create this ticket in. */
+    category:string,
+    /**An optional discord category id to move this ticket to when closed. */
+    closedCategory:string,
+    /**An optional discord category id to create this ticket in when the primary one is full (max. 50 tickets). */
+    backupCategory:string,
+    /**A list of discord category ids to move this ticket to when claimed by a specific user. */
+    claimedCategory:{
+        /**The user which claimed the ticket. */
+        user:string,
+        /**The category to move the ticket to when claimed by this user. */
+        category:string
+    }[],
+    /**The channel description/topic shown at the top of the channel in discord. */
+    description:string
+}
+
 /**## ODJsonConfig_DefaultOptionTicketType `interface`
  * This interface is an object which has all ticket properties for options in the `options.json` config!
  */
@@ -340,27 +365,7 @@ export interface ODJsonConfig_DefaultOptionTicketType extends ODJsonConfig_Defau
     /**A list of valid question ids from the `questions.json` config. */
     questions:string[],
     /**All settings related to the ticket channel itself. */
-    channel:{
-        /**The prefix used in the name of this ticket channel. */
-        prefix:string,
-        /**The type of suffix used in the name of this ticket channel. */
-        suffix:"user-name"|"user-id"|"random-number"|"random-hex"|"counter-dynamic"|"counter-fixed",
-        /**An optional discord category id to create this ticket in. */
-        category:string,
-        /**An optional discord category id to move this ticket to when closed. */
-        closedCategory:string,
-        /**An optional discord category id to create this ticket in when the primary one is full (max. 50 tickets). */
-        backupCategory:string,
-        /**A list of discord category ids to move this ticket to when claimed by a specific user. */
-        claimedCategory:{
-            /**The user which claimed the ticket. */
-            user:string,
-            /**The category to move the ticket to when claimed by this user. */
-            category:string
-        }[],
-        /**The channel description/topic shown at the top of the channel in discord. */
-        description:string
-    },
+    channel:ODJsonConfig_DefaultOptionTicketChannelType,
     /**All settings related to the message sent in DM to the creator when the ticket is created. */
     dmMessage:{
         /**Enable this message. */
@@ -495,6 +500,30 @@ export interface ODJsonConfig_DefaultPanelEmbedSettingsType {
     timestamp:boolean
 }
 
+/**## ODJsonConfig_DefaultPanelSettingsType `interface`
+ * This interface is a collection of additional settings for extra customisation in a panel.
+ */
+export interface ODJsonConfig_DefaultPanelSettingsType {
+    /**The placeholder used in the dropdown when enabled. */
+    dropdownPlaceholder:string,
+
+    /**Enable a max tickets warning in the text contents. */
+    enableMaxTicketsWarningInText:boolean,
+    /**Enable a max tickets warning in the embed. */
+    enableMaxTicketsWarningInEmbed:boolean,
+
+    /**The layout/complexity of the describe options feature. */
+    describeOptionsLayout:"simple"|"normal"|"detailed",
+    /**A custom title for the describe options feature. */
+    describeOptionsCustomTitle:string,
+    /**Describe the options in the text contents. */
+    describeOptionsInText:boolean,
+    /**Describe the options in the embed fields. */
+    describeOptionsInEmbedFields:boolean,
+    /**Describe the options in the embed description. */
+    describeOptionsInEmbedDescription:boolean
+}
+
 /**## ODJsonConfig_DefaultPanelType `interface`
  * This interface is an object which has all properties for panels in the `panels.json` config!
  */
@@ -512,26 +541,8 @@ export interface ODJsonConfig_DefaultPanelType {
     text:string,
     /**The embed of this panel. */
     embed:ODJsonConfig_DefaultPanelEmbedSettingsType,
-    settings:{
-        /**The placeholder used in the dropdown when enabled. */
-        dropdownPlaceholder:string,
-
-        /**Enable a max tickets warning in the text contents. */
-        enableMaxTicketsWarningInText:boolean,
-        /**Enable a max tickets warning in the embed. */
-        enableMaxTicketsWarningInEmbed:boolean,
-
-        /**The layout/complexity of the describe options feature. */
-        describeOptionsLayout:"simple"|"normal"|"detailed",
-        /**A custom title for the describe options feature. */
-        describeOptionsCustomTitle:string,
-        /**Describe the options in the text contents. */
-        describeOptionsInText:boolean,
-        /**Describe the options in the embed fields. */
-        describeOptionsInEmbedFields:boolean,
-        /**Describe the options in the embed description. */
-        describeOptionsInEmbedDescription:boolean
-    }
+    /**A collection of additional settings for extra customisation in a panel. */
+    settings:ODJsonConfig_DefaultPanelSettingsType
 }
 
 /**## ODJsonConfig_DefaultPanels `default_class`
@@ -542,6 +553,18 @@ export interface ODJsonConfig_DefaultPanelType {
  */
 export class ODJsonConfig_DefaultPanels extends ODJsonConfig {
     declare data: ODJsonConfig_DefaultPanelType[]
+}
+
+/**## ODJSonConfig_DefaultQuestionLengthSettings `interface`
+ * This interface is a collection of settings related to length validation in a question.
+ */
+export interface ODJSonConfig_DefaultQuestionLengthSettings {
+    /**Enable text length verification. */
+    enabled:boolean,
+    /**The minimum text input length. */
+    min:number,
+    /**The maximum text input length. */
+    max:number
 }
 
 /**## ODJsonConfig_DefaultShortQuestionType `interface`
@@ -559,15 +582,8 @@ export interface ODJsonConfig_DefaultShortQuestionType {
     required:boolean,
     /**A placeholder for the question. */
     placeholder:string,
-    /**Settings related to the length of the input. */
-    length:{
-        /**Enable text length verification. */
-        enabled:boolean,
-        /**The minimum text input length. */
-        min:number,
-        /**The maximum text input length. */
-        max:number
-    }
+    /**A collection of settings related to length validation in a question. */
+    length:ODJSonConfig_DefaultQuestionLengthSettings
 }
 
 /**## ODJsonConfig_DefaultParagraphQuestionType `interface`
@@ -585,15 +601,8 @@ export interface ODJsonConfig_DefaultParagraphQuestionType {
     required:boolean,
     /**A placeholder for the question. */
     placeholder:string,
-    /**Settings related to the length of the input. */
-    length:{
-        /**Enable text length verification. */
-        enabled:boolean,
-        /**The minimum text input length. */
-        min:number,
-        /**The maximum text input length. */
-        max:number
-    }
+    /**A collection of settings related to length validation in a question. */
+    length:ODJSonConfig_DefaultQuestionLengthSettings
 }
 
 /**## ODJsonConfig_DefaultQuestions `default_class`
@@ -607,6 +616,77 @@ export class ODJsonConfig_DefaultQuestions extends ODJsonConfig {
         ODJsonConfig_DefaultShortQuestionType|
         ODJsonConfig_DefaultParagraphQuestionType
     )[]
+}
+
+/**## ODJsonConfig_DefaultTranscriptsTextLayout `interface`
+ * This interface contains the layout of the text transcripts.
+ */
+export interface ODJsonConfig_DefaultTranscriptsTextLayout {
+    /**The layout/complexity of the text transcripts. */
+    layout:"simple"|"normal"|"detailed",
+    /**Include stats in the transcript. */
+    includeStats:boolean,
+    /**Include user & message ids in the transcript. */
+    includeIds:boolean,
+    /**Include embeds in the transcript. */
+    includeEmbeds:boolean,
+    /**Include files in the transcript. */
+    includeFiles:boolean,
+    /**Include bot messages in the transcript. */
+    includeBotMessages:boolean,
+
+    /**How to name the transcript file? */
+    fileMode:"custom"|"channel-name"|"channel-id"|"user-name"|"user-id",
+    /**A custom name for the transcript file (when using `"custom"`) */
+    customFileName:string
+}
+
+/**## ODJsonConfig_DefaultTranscriptsHtmlLayout `interface`
+ * This interface contains the layout of the HTML transcripts.
+ */
+export interface ODJsonConfig_DefaultTranscriptsHtmlLayout {
+    /**Settings related to the background. */
+    background:{
+        /**Enable a custom background. */
+        enableCustomBackground:boolean,
+        /**The background (hex) color. */
+        backgroundColor:string,
+        /**The background image url. */
+        backgroundImage:string
+    },
+    /**Settings related to the header. */
+    header:{
+        /**Enable a custom header. */
+        enableCustomHeader:boolean,
+        /**The background (hex) color of the header. */
+        backgroundColor:string,
+        /**The deco color (horizontal line) of the header. */
+        decoColor:string,
+        /**The text color of the header. */
+        textColor:string
+    },
+    /**Settings related to the stats section. */
+    stats:{
+        /**Enable a custom stats section. */
+        enableCustomStats:false,
+        /**The background color of the stats section. */
+        backgroundColor:string,
+        /**The key text color of the stats section. */
+        keyTextColor:string,
+        /**The value text color of the stats section. */
+        valueTextColor:string,
+        /**The background color of the hide button in the stats section. */
+        hideBackgroundColor:string,
+        /**The text color of the hide button in the stats section. */
+        hideTextColor:string
+    },
+    /**Settings related to the favicon. */
+    favicon:{
+        /**Enable a custom background. */
+        enableCustomFavicon:boolean,
+        /**A link to the custom favicon. */
+        imageUrl:string
+    }
 }
 
 /**## ODJsonConfig_DefaultTranscripts `default_class`
@@ -648,69 +728,8 @@ export class ODJsonConfig_DefaultTranscripts extends ODJsonConfig {
             includeTicketStats:boolean
         },
         /**The layout of the text transcripts. */
-        textTranscriptStyle:{
-            /**The layout/complexity of the text transcripts. */
-            layout:"simple"|"normal"|"detailed",
-            /**Include stats in the transcript. */
-            includeStats:boolean,
-            /**Include user & message ids in the transcript. */
-            includeIds:boolean,
-            /**Include embeds in the transcript. */
-            includeEmbeds:boolean,
-            /**Include files in the transcript. */
-            includeFiles:boolean,
-            /**Include bot messages in the transcript. */
-            includeBotMessages:boolean,
-    
-            /**How to name the transcript file? */
-            fileMode:"custom"|"channel-name"|"channel-id"|"user-name"|"user-id",
-            /**A custom name for the transcript file (when using `"custom"`) */
-            customFileName:string
-        },
+        textTranscriptStyle:ODJsonConfig_DefaultTranscriptsTextLayout,
         /**The layout of the HTML transcripts. */
-        htmlTranscriptStyle:{
-            /**Settings related to the background. */
-            background:{
-                /**Enable a custom background. */
-                enableCustomBackground:boolean,
-                /**The background (hex) color. */
-                backgroundColor:string,
-                /**The background image url. */
-                backgroundImage:string
-            },
-            /**Settings related to the header. */
-            header:{
-                /**Enable a custom header. */
-                enableCustomHeader:boolean,
-                /**The background (hex) color of the header. */
-                backgroundColor:string,
-                /**The deco color (horizontal line) of the header. */
-                decoColor:string,
-                /**The text color of the header. */
-                textColor:string
-            },
-            /**Settings related to the stats section. */
-            stats:{
-                /**Enable a custom stats section. */
-                enableCustomStats:false,
-                /**The background color of the stats section. */
-                backgroundColor:string,
-                /**The key text color of the stats section. */
-                keyTextColor:string,
-                /**The value text color of the stats section. */
-                valueTextColor:string,
-                /**The background color of the hide button in the stats section. */
-                hideBackgroundColor:string,
-                /**The text color of the hide button in the stats section. */
-                hideTextColor:string
-            },
-            /**Settings related to the favicon. */
-            favicon:{
-                /**Enable a custom background. */
-                enableCustomFavicon:boolean,
-                /**A link to the custom favicon. */
-                imageUrl:string
-            }
-        }
+        htmlTranscriptStyle:ODJsonConfig_DefaultTranscriptsHtmlLayout
     }
 }

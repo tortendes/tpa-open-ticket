@@ -28,19 +28,21 @@ export const registerActions = async () => {
             await opendiscord.stats.get("opendiscord:user").setStat("opendiscord:tickets-closed",user.id,1,"increase")
 
             //update category
-            const closeCategory = ticket.option.get("opendiscord:channel-category-closed").value
-            if (closeCategory !== ""){
-                try {
-                    channel.setParent(closeCategory,{lockPermissions:false})
-                    ticket.get("opendiscord:category-mode").value = "closed"
-                    ticket.get("opendiscord:category").value = closeCategory
-                }catch(e){
-                    opendiscord.log("Unable to move ticket to 'closed category'!","error",[
-                        {key:"channel",value:"#"+channel.name},
-                        {key:"channelid",value:channel.id,hidden:true},
-                        {key:"categoryid",value:closeCategory}
-                    ])
-                    opendiscord.debugfile.writeErrorMessage(new api.ODError(e,"uncaughtException"))
+            if (params.allowCategoryChange){
+                const closeCategory = ticket.option.get("opendiscord:channel-category-closed").value
+                if (closeCategory !== ""){
+                    try {
+                        channel.setParent(closeCategory,{lockPermissions:false})
+                        ticket.get("opendiscord:category-mode").value = "closed"
+                        ticket.get("opendiscord:category").value = closeCategory
+                    }catch(e){
+                        opendiscord.log("Unable to move ticket to 'closed category'!","error",[
+                            {key:"channel",value:"#"+channel.name},
+                            {key:"channelid",value:channel.id,hidden:true},
+                            {key:"categoryid",value:closeCategory}
+                        ])
+                        opendiscord.debugfile.writeErrorMessage(new api.ODError(e,"uncaughtException"))
+                    }
                 }
             }
 

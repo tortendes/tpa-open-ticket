@@ -2,13 +2,16 @@ import {opendiscord, api, utilities} from "../../index"
 
 export const migrations = [
     //MIGRATE TO v4.0.0
-    new utilities.ODVersionMigration(api.ODVersion.fromString("opendiscord:version","v4.0.0"),async () => {
-        //MIGRATE BEFORE STARTUP
+    new utilities.ODVersionMigration(api.ODVersion.fromString("opendiscord:version","v4.0.0"),async () => {},async () => {}),
+    
+    //MIGRATE TO v4.0.1
+    new utilities.ODVersionMigration(api.ODVersion.fromString("opendiscord:version","v4.0.1"),async () => {},async () => {
+        //AFTER INIT MIGRATION
 
-        //nothing needs to be transferred :)
-    },() => {
-        //MIGRATE AFTER INITIAL STARTUP (plugins, flags, config, database, language, ... => loaded)
-
-        //nothing needs to be transferred :)
+        //add opendiscord:panel-message properties for all existing panels.
+        const globalDatabase = opendiscord.databases.get("opendiscord:global")
+        for (const panel of (await globalDatabase.getCategory("opendiscord:panel-update") ?? [])){
+            globalDatabase.set("opendiscord:panel-message",panel.key,panel.value)
+        }
     })
 ]

@@ -54,11 +54,27 @@ export type ODDiscordIdType = "role"|"server"|"channel"|"category"|"user"|"membe
  */
 export class ODId {
     /**The full value of this `ODId` as a `string`. */
-    value: string
-    /**The source of the id (text before `:`). (e.g. `openticket` for all built-in ids) */
+    #value: string
+    /**The full value of this `ODId` as a `string`. */
+    set value(id:string){
+        this._change(this.#value,id)
+        this.#value = id
+    }
+    get value(){
+        return this.#value
+    }
+    /**The source of the id (text before `:`). (e.g. `openticket` for all built-in ids)
+     * 
+     * @deprecated Replaced with `getNamespace()` and will be removed in `v4.1.0`.
+     */
     source: string
-    /**The identifier of the id (text after `:`). */
+    /**The identifier of the id (text after `:`). 
+     * 
+     * @deprecated Replaced with `getIdentifier()` and will be removed in `v4.1.0`.
+     */
     identifier: string
+    /**The change listener for the parent `ODManager` of this `ODId`. */
+    #change: ((oldId:string,newId:string) => void)|null = null
 
     constructor(id:ODValidId){
         if (typeof id != "string" && !(id instanceof ODId)) throw new ODSystemError("Invalid constructor parameter => id:ODValidId")
@@ -74,10 +90,10 @@ export class ODId {
                 }
             })
 
-            if (result.length > 0) this.value = result.join("")
+            if (result.length > 0) this.#value = result.join("")
             else throw new ODSystemError("invalid ID at 'new ODID(id: "+id+")'")
             
-            const splitted = this.value.split(":")
+            const splitted = this.#value.split(":")
             if (splitted.length > 1){
                 this.source = splitted[0]
                 splitted.shift()
@@ -88,7 +104,7 @@ export class ODId {
             }
         }else{
             //id is ODId
-            this.value = id.value
+            this.#value = id.#value
             this.source = id.source
             this.identifier = id.identifier
         }
@@ -96,7 +112,36 @@ export class ODId {
 
     /**Returns a string representation of this id. (same as `this.value`) */
     toString(){
-        return this.value
+        return this.#value
+    }
+    /**The namespace of the id before `:`. (e.g. `openticket` for `openticket:autoclose-enabled`) */
+    getNamespace(){
+        const splitted = this.#value.split(":")
+        if (splitted.length > 1) return splitted[0]
+        else return ""
+    }
+    /**The identifier of the id after `:`. (e.g. `autoclose-enabled` for `openticket:autoclose-enabled`) */
+    getIdentifier(){
+        const splitted = this.#value.split(":")
+        if (splitted.length > 1){
+            splitted.shift()
+            return splitted.join(":")
+        }else return this.#value
+    }
+    /**Trigger an `onChange()` event in the parent `ODManager` of this class. */
+    protected _change(oldId:string,newId:string){
+        if (this.#change){
+            try{
+                this.#change(oldId,newId)
+            }catch(err){
+                process.emit("uncaughtException",err)
+                throw new ODSystemError("Failed to execute _change() callback!")
+            }
+        }
+    }
+    /****(❌ SYSTEM ONLY!!)** Set the callback executed when a value inside this class changes. */
+    changed(callback:((oldId:string,newId:string) => void)|null){
+        this.#change = callback
     }
 }
 
@@ -127,6 +172,8 @@ export class ODManagerChangeHelper {
 }
 
 /**## ODManagerRedirectHelper `class`
+ * @deprecated ### Will be removed in Open Ticket `v4.1.0`!
+ * 
  * This is Open Ticket ticket manager redirect helper.
  * 
  * It is used to redirect a source to another source when the id isn't found.
@@ -206,8 +253,8 @@ export class ODManager<DataType extends ODManagerData> extends ODManagerChangeHe
     #debug?: ODDebugger
     /**The message to send when debugging this manager. */
     #debugname?: string
-    /**An array storing all data classes ❌ **(don't edit unless really needed!)***/
-    #data: DataType[] = []
+    /**The map storing all data classes in this manager. */
+    #data: Map<string,DataType> = new Map()
     /**An array storing all listeners when data is added. */
     #addListeners: ODManagerAddCallback<DataType>[] = []
     /**An array storing all listeners when data has changed. */
@@ -223,7 +270,7 @@ export class ODManager<DataType extends ODManagerData> extends ODManagerChangeHe
         this.#debugname = debugname
     }
     
-    /**Add data to the manager. The id will be fetched from the data class! You can optionally select to overwrite existing data!*/
+    /**Add data to the manager. The `ODId` in the data class will be used as identifier! You can optionally select to overwrite existing data!*/
     add(data:DataType|DataType[], overwrite?:boolean): boolean {
         //repeat same command when data is an array
         if (Array.isArray(data)){
@@ -233,106 +280,94 @@ export class ODManager<DataType extends ODManagerData> extends ODManagerChangeHe
             return false
         }
 
+        //add listener for data id change => transfer data within manager
+        data.id.changed((oldId,newId) => {
+            this.#data.delete(oldId)
+            this.#data.set(newId,data)
+        })
+
         //add data
-        const existIndex = this.#data.findIndex((d) => d.id.value === data.id.value)
-        if (existIndex < 0){
-            this.#data.push(data)
-            if (this.#debug) this.#debug.debug("Added new "+this.#debugname+" to manager",[{key:"id",value:data.id.value},{key:"overwrite",value:"false"}])
-            
-            //change listeners
-            data.changed(() => {
-                //notify change in upper-manager (because data in this manager changed)
-                this._change()
-                this.#changeListeners.forEach((cb) => {
-                    try{
-                        cb(data)
-                    }catch(err){
-                        throw new ODSystemError("Failed to run manager onChange() listener.\n"+err)
-                    }
-                })
-            })
-
-            //add listeners
-            this.#addListeners.forEach((cb) => {
-                try{
-                    cb(data,false)
-                }catch(err){
-                    throw new ODSystemError("Failed to run manager onAdd() listener.\n"+err)
-                }
-            })
-
-            //notify change in upper-manager (because data added)
-            this._change()
-
-            return false
-        }else{
+        let didOverwrite: boolean
+        if (this.#data.has(data.id.value)){
             if (!overwrite) throw new ODSystemError("Id '"+data.id.value+"' already exists in "+this.#debugname+" manager. Use 'overwrite:true' to allow overwriting!")
-            this.#data[existIndex] = data
+            this.#data.set(data.id.value,data)
+            didOverwrite = true
             if (this.#debug) this.#debug.debug("Added new "+this.#debugname+" to manager",[{key:"id",value:data.id.value},{key:"overwrite",value:"true"}])
             
-            //change listeners
-            data.changed(() => {
-                //notify change in upper-manager (because data in this manager changed)
-                this._change()
-                this.#changeListeners.forEach((cb) => {
-                    try{
-                        cb(data)
-                    }catch(err){
-                        throw new ODSystemError("Failed to run manager onChange() listener.\n"+err)
-                    }
-                })
-            })
+        }else{
+            this.#data.set(data.id.value,data)
+            didOverwrite = false
+            if (this.#debug) this.#debug.debug("Added new "+this.#debugname+" to manager",[{key:"id",value:data.id.value},{key:"overwrite",value:"false"}])
+            
+        }
 
-            //add listeners
-            this.#addListeners.forEach((cb) => {
+        //emit change listeners
+        data.changed(() => {
+            //notify change in upper-manager (because data in this manager changed)
+            this._change()
+            this.#changeListeners.forEach((cb) => {
                 try{
-                    cb(data,true)
+                    cb(data)
                 }catch(err){
-                    throw new ODSystemError("Failed to run manager onAdd() listener.\n"+err)
+                    throw new ODSystemError("Failed to run manager onChange() listener.\n"+err)
                 }
             })
+        })
 
-            //notify change in upper-manager (because data added)
-            this._change()
-            
-            return true
-        }
+        //emit add listeners
+        this.#addListeners.forEach((cb) => {
+            try{
+                cb(data,didOverwrite)
+            }catch(err){
+                throw new ODSystemError("Failed to run manager onAdd() listener.\n"+err)
+            }
+        })
+
+        //notify change in upper-manager (because data added)
+        this._change()
+
+        return didOverwrite
     }
     /**Get data that matches the `ODId`. Returns the found data.*/
     get(id:ODValidId): DataType|null {
         const newId = new ODId(id)
-        const d = this.#data.find((a) => a.id.value == newId.value)
-        if (d) return d
+        const data = this.#data.get(newId.value)
+        if (data) return data
         else{
-            const redirect = this.redirects.list().find((redirect) => redirect.fromSource === newId.source)
+            //DEPRECATED!!!
+            const redirect = this.redirects.list().find((redirect) => redirect.fromSource === newId.getNamespace())
             if (!redirect) return null
             else{
-                const redirectId = new ODId(redirect.toSource+":"+newId.identifier)
+                const redirectId = new ODId(redirect.toSource+":"+newId.getIdentifier())
                 return this.get(redirectId)
             }
         }
     }
-    /**Remove data that matches the `ODId`. Returns the removed data.*/
+    /**Remove data that matches the `ODId`. Returns the removed data. */
     remove(id:ODValidId): DataType|null {
         const newId = new ODId(id)
-        const index = this.#data.findIndex((a) => a.id.value == newId.value)
-        if (index < 0){
-            const redirect = this.redirects.list().find((redirect) => redirect.fromSource === newId.source)
+        const data = this.#data.get(newId.value)
+        
+        if (!data){
+            //DEPRECATED!!!
+            const redirect = this.redirects.list().find((redirect) => redirect.fromSource === newId.getNamespace())
             if (!redirect){
                 if (this.#debug) this.#debug.debug("Removed "+this.#debugname+" from manager",[{key:"id",value:newId.value},{key:"found",value:"false"}])
                 return null
             }else{
-                const redirectId = new ODId(redirect.toSource+":"+newId.identifier)
+                const redirectId = new ODId(redirect.toSource+":"+newId.getIdentifier())
                 return this.remove(redirectId)
             }
+        }else{
+            this.#data.delete(newId.value)
+            if (this.#debug) this.#debug.debug("Removed "+this.#debugname+" from manager",[{key:"id",value:newId.value},{key:"found",value:"true"}])
         }
-        if (this.#debug) this.#debug.debug("Removed "+this.#debugname+" from manager",[{key:"id",value:newId.value},{key:"found",value:"true"}])
-        const data = this.#data.splice(index,1)[0]
-        
-        //change listeners
+                
+        //remove all listeners
+        data.id.changed(null)
         data.changed(null)
 
-        //remove listeners
+        //emit remove listeners
         this.#removeListeners.forEach((cb) => {
             try{
                 cb(data)
@@ -346,39 +381,40 @@ export class ODManager<DataType extends ODManagerData> extends ODManagerChangeHe
 
         return data
     }
-    /**Check if data that matches the `ODId` exists. Returns a boolean.*/
+    /**Check if data that matches the `ODId` exists. Returns a boolean. */
     exists(id:ODValidId): boolean {
         const newId = new ODId(id)
-        const d = this.#data.find((a) => a.id.value == newId.value)
-        if (d) return true
+        if (this.#data.has(newId.value)) return true
         else{
-            const redirect = this.redirects.list().find((redirect) => redirect.fromSource === newId.source)
+            //DEPRECATED!!!
+            const redirect = this.redirects.list().find((redirect) => redirect.fromSource === newId.getNamespace())
             if (!redirect) return false
             else{
-                const redirectId = new ODId(redirect.toSource+":"+newId.identifier)
+                const redirectId = new ODId(redirect.toSource+":"+newId.getIdentifier())
                 return this.exists(redirectId)
             }
         }
     }
     /**Get all data inside this manager*/
     getAll(): DataType[] {
-        return [...this.#data]
+        return Array.from(this.#data.values())
     }
     /**Get all data that matches inside the filter function*/
     getFiltered(predicate:(value:DataType, index:number, array:DataType[]) => unknown): DataType[] {
-        return this.#data.filter(predicate)
+        return Array.from(this.#data.values()).filter(predicate)
     }
-    /**Get all data that matches the regex*/
+    /**Get all data where the `ODId` matches the provided RegExp. */
     getRegex(regex:RegExp): DataType[] {
-        return this.#data.filter((data) => regex.test(data.id.value))
+        return Array.from(this.#data.values()).filter((data) => regex.test(data.id.value))
     }
-    /**Get the length of the data inside this manager*/
+    /**Get the length/size/amount of the data inside this manager. */
     getLength(){
-        return this.#data.length
+        return this.#data.size
     }
     /**Get a list of all the ids inside this manager*/
     getIds(): ODId[] {
-        return this.#data.map((d) => d.id)
+        const ids = Array.from(this.#data.keys())
+        return ids.map((id) => new ODId(id))
     }
     /**Run an iterator over all data in this manager. This method also supports async-await behaviour!*/
     async loopAll(cb:(data:DataType,id:ODId) => ODPromiseVoid): Promise<void> {
@@ -535,6 +571,52 @@ export class ODVersion extends ODManagerData {
             return (v.toString() === this.toString())
         })
     }
+    /**Check if this version is higher or equal to the provided `requirement`. */
+    min(requirement:string|ODVersion){
+        if (typeof requirement == "string") requirement = ODVersion.fromString("temp",requirement)
+        
+        //skip when primary version is higher or lower than current one.
+        if (this.primary < requirement.primary) return false
+        else if (this.primary > requirement.primary) return true
+
+        //skip when secondary version is higher or lower than current one.
+        if (this.secondary < requirement.secondary) return false
+        else if (this.secondary > requirement.secondary) return true
+
+        //skip when tertiary version is higher or lower than current one.
+        if (this.tertiary < requirement.tertiary) return false
+        else if (this.tertiary > requirement.tertiary) return true
+        
+        return true
+    }
+    /**Check if this version is lower or equal to the provided `requirement`. */
+    max(requirement:string|ODVersion){
+        if (typeof requirement == "string") requirement = ODVersion.fromString("temp",requirement)
+        
+        //skip when primary version is higher or lower than current one.
+        if (this.primary < requirement.primary) return true
+        else if (this.primary > requirement.primary) return false
+
+        //skip when secondary version is higher or lower than current one.
+        if (this.secondary < requirement.secondary) return true
+        else if (this.secondary > requirement.secondary) return false
+
+        //skip when tertiary version is higher or lower than current one.
+        if (this.tertiary < requirement.tertiary) return true
+        else if (this.tertiary > requirement.tertiary) return false
+        
+        return true
+    }
+    /**Check if this version is matches the major version (`vX.X`) of the provided `requirement`. */
+    major(requirement:string|ODVersion){
+        if (typeof requirement == "string") requirement = ODVersion.fromString("temp",requirement)
+        return (this.primary == requirement.primary && this.secondary == requirement.secondary)
+    }
+    /**Check if this version is matches the minor version (`vX.X.X`) of the provided `requirement`. */
+    minor(requirement:string|ODVersion){
+        if (typeof requirement == "string") requirement = ODVersion.fromString("temp",requirement)
+        return (this.primary == requirement.primary && this.secondary == requirement.secondary && this.tertiary == requirement.tertiary)
+    }
 }
 
 /**## ODHTTPGetRequest `class`
@@ -566,6 +648,8 @@ export class ODHTTPGetRequest {
         this.throwOnError = throwOnError
         const newConfig = config ?? {}
         newConfig.method = "GET"
+        if (newConfig.headers) Object.assign(newConfig.headers,{"User-Agent":"OpenDiscordBots-OpenTicket/4.0.1"})
+        else newConfig.headers = {"User-Agent":"OpenDiscordBots-OpenTicket/4.0.1"}
         this.config = newConfig
     }
 
@@ -619,6 +703,8 @@ export class ODHTTPPostRequest {
         this.throwOnError = throwOnError
         const newConfig = config ?? {}
         newConfig.method = "POST"
+        if (newConfig.headers) Object.assign(newConfig.headers,{"User-Agent":"OpenDiscordBots-OpenTicket/4.0.1"})
+        else newConfig.headers = {"User-Agent":"OpenDiscordBots-OpenTicket/4.0.1"}
         this.config = newConfig
     }
 

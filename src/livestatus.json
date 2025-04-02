@@ -1,13 +1,13 @@
 [
     {
         "message":{
-            "title":"Open Ticket Beta",
+            "title":"Open Ticket v4.0",
             "titleColor":"red",
-            "description":"Hi there! You're using a beta version of the bot! Please report all bugs and errors to our discord server!",
+            "description":"Open Ticket v4.0 has officially been released! Please give our project a star to help us grow!",
             "descriptionColor":"normal"
         },
         "active":{
-            "versions":["4.0.0"],
+            "versions":["4.0.0","4.0.1","4.0.2","4.0.3","4.0.4"],
             "languages":[],
             "allLanguages":true,
             "usingPlugins":true,
@@ -23,11 +23,11 @@
         "message":{
             "title":"Documentation",
             "titleColor":"blue",
-            "description":"There is currently no documentation available yet for OT v4 beta!",
+            "description":"The official documentation for Open Ticket v4 is available at https://otdocs.dj-dj.be!",
             "descriptionColor":"normal"
         },
         "active":{
-            "versions":["4.0.0"],
+            "versions":["4.0.0","4.0.1","4.0.2","4.0.3","4.0.4"],
             "languages":[],
             "allLanguages":true,
             "usingPlugins":true,
