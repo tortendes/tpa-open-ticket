@@ -155,7 +155,7 @@ export class ODVersionMigration {
 
 export const utilities: ODUtilities = {
     project:"openticket",
-    isBeta:true,
+    isBeta:false,
     moduleInstalled:(id:string) => {
         return moduleInstalled(id,false)
     },

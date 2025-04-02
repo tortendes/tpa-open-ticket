@@ -205,6 +205,14 @@ export const registerDropdownResponders = async () => {
                 }
                 if (generalConfig.data.system.replyOnTicketCreation) await instance.reply(await opendiscord.builders.messages.getSafe("opendiscord:ticket-created").build("panel-dropdown",{guild,channel:res.channel,user,ticket:res.ticket}))
             }
+
+            //update panel after dropdown usage (reset panel choice)
+            const globalDatabase = opendiscord.databases.get("opendiscord:global")
+            const rawPanelId = await globalDatabase.get("opendiscord:panel-message",instance.message.channel.id+"_"+instance.message.id)
+            if (rawPanelId){
+                const panel = opendiscord.panels.get(rawPanelId)
+                if (panel) await instance.message.edit((await opendiscord.builders.messages.getSafe("opendiscord:panel").build("auto-update",{guild,channel,user,panel})).message)
+            }
         })
     )
 }

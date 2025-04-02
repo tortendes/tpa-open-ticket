@@ -36,7 +36,7 @@ export interface ODActionManagerIds_Default {
     },
     "opendiscord:close-ticket":{
         source:"slash"|"text"|"ticket-message"|"reopen-message"|"autoclose"|"other",
-        params:{guild:discord.Guild,channel:discord.GuildTextBasedChannel,user:discord.User,ticket:ODTicket,reason:string|null,sendMessage:boolean},
+        params:{guild:discord.Guild,channel:discord.GuildTextBasedChannel,user:discord.User,ticket:ODTicket,reason:string|null,sendMessage:boolean,allowCategoryChange?:boolean},
         result:{},
         workers:"opendiscord:close-ticket"|"opendiscord:discord-logs"|"opendiscord:logs"
     },
@@ -48,19 +48,19 @@ export interface ODActionManagerIds_Default {
     },
     "opendiscord:reopen-ticket":{
         source:"slash"|"text"|"ticket-message"|"close-message"|"autoclose-message"|"other",
-        params:{guild:discord.Guild,channel:discord.GuildTextBasedChannel,user:discord.User,ticket:ODTicket,reason:string|null,sendMessage:boolean},
+        params:{guild:discord.Guild,channel:discord.GuildTextBasedChannel,user:discord.User,ticket:ODTicket,reason:string|null,sendMessage:boolean,allowCategoryChange?:boolean},
         result:{},
         workers:"opendiscord:reopen-ticket"|"opendiscord:discord-logs"|"opendiscord:logs"
     },
     "opendiscord:claim-ticket":{
         source:"slash"|"text"|"ticket-message"|"unclaim-message"|"other",
-        params:{guild:discord.Guild,channel:discord.GuildTextBasedChannel,user:discord.User,ticket:ODTicket,reason:string|null,sendMessage:boolean},
+        params:{guild:discord.Guild,channel:discord.GuildTextBasedChannel,user:discord.User,ticket:ODTicket,reason:string|null,sendMessage:boolean,allowCategoryChange?:boolean},
         result:{},
         workers:"opendiscord:claim-ticket"|"opendiscord:discord-logs"|"opendiscord:logs"
     },
     "opendiscord:unclaim-ticket":{
         source:"slash"|"text"|"ticket-message"|"claim-message"|"other",
-        params:{guild:discord.Guild,channel:discord.GuildTextBasedChannel,user:discord.User,ticket:ODTicket,reason:string|null,sendMessage:boolean},
+        params:{guild:discord.Guild,channel:discord.GuildTextBasedChannel,user:discord.User,ticket:ODTicket,reason:string|null,sendMessage:boolean,allowCategoryChange?:boolean},
         result:{},
         workers:"opendiscord:unclaim-ticket"|"opendiscord:discord-logs"|"opendiscord:logs"
     },

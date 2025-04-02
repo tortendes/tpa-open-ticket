@@ -210,7 +210,7 @@ export class ODButtonInstance {
  */
 export class ODButton<Source extends string,Params> extends ODBuilderImplementation<ODButtonInstance,Source,Params,ODComponentBuildResult> {
     /**Build this button & compile it for discord.js */
-    async build(source:Source, params:Params){
+    async build(source:Source, params:Params): Promise<ODComponentBuildResult> {
         if (this.didCache && this.cache && this.allowCache) return this.cache
         
         try {
@@ -239,6 +239,59 @@ export class ODButton<Source extends string,Params> extends ODBuilderImplementat
             return {id:this.id,component:button}
         }catch(err){
             process.emit("uncaughtException",new ODSystemError("ODButton:build(\""+this.id.value+"\") => Major Error (see next error)"))
+            process.emit("uncaughtException",err)
+            return {id:this.id,component:null}
+        }
+    }
+}
+
+/**## ODQuickButton `class`
+ * This is an Open Ticket quick button builder.
+ * 
+ * With this class, you can quickly create a button to use in a message.
+ * This quick button can be used by Open Ticket plugins instead of the normal builders to speed up the process!
+ * 
+ * Because of the quick functionality, these buttons are less customisable by other plugins.
+ */
+export class ODQuickButton {
+    /**The id of this button. */
+    id: ODId
+    /**The current data of this button */
+    data: ODButtonData = {
+        customId:"",
+        mode:"button",
+        url:null,
+        color:null,
+        label:null,
+        emoji:null,
+        disabled:false
+    }
+
+    constructor(id:ODValidId,data:ODButtonData){
+        this.id = new ODId(id)
+        this.data = data
+    }
+
+    /**Build this button & compile it for discord.js */
+    async build(): Promise<ODComponentBuildResult> {
+        try {
+            //create the discord.js button
+            const button = new discord.ButtonBuilder()
+            if (this.data.mode == "button") button.setCustomId(this.data.customId)
+            if (this.data.mode == "url") button.setStyle(discord.ButtonStyle.Link)
+            else if (this.data.color == "gray") button.setStyle(discord.ButtonStyle.Secondary)
+            else if (this.data.color == "blue") button.setStyle(discord.ButtonStyle.Primary)
+            else if (this.data.color == "green") button.setStyle(discord.ButtonStyle.Success)
+            else if (this.data.color == "red") button.setStyle(discord.ButtonStyle.Danger)
+            if (this.data.url) button.setURL(this.data.url)
+            if (this.data.label) button.setLabel(this.data.label)
+            if (this.data.emoji) button.setEmoji(this.data.emoji)
+            if (this.data.disabled) button.setDisabled(this.data.disabled)
+            if (!this.data.emoji && !this.data.label) button.setLabel(this.data.customId)
+
+            return {id:this.id,component:button}
+        }catch(err){
+            process.emit("uncaughtException",new ODSystemError("ODQuickButton:build(\""+this.id.value+"\") => Major Error (see next error)"))
             process.emit("uncaughtException",err)
             return {id:this.id,component:null}
         }
@@ -403,7 +456,7 @@ export class ODDropdownInstance {
  */
 export class ODDropdown<Source extends string,Params> extends ODBuilderImplementation<ODDropdownInstance,Source,Params,ODComponentBuildResult> {
     /**Build this dropdown & compile it for discord.js */
-    async build(source:Source, params:Params){
+    async build(source:Source, params:Params): Promise<ODComponentBuildResult> {
         if (this.didCache && this.cache && this.allowCache) return this.cache
         
         try{
@@ -493,6 +546,118 @@ export class ODDropdown<Source extends string,Params> extends ODBuilderImplement
             }
         }catch(err){
             process.emit("uncaughtException",new ODSystemError("ODDropdown:build(\""+this.id.value+"\") => Major Error (see next error)"))
+            process.emit("uncaughtException",err)
+            return {id:this.id,component:null}
+        }
+    }
+}
+
+/**## ODQuickDropdown `class`
+ * This is an Open Ticket quick dropdown builder.
+ * 
+ * With this class, you can quickly create a dropdown to use in a message.
+ * This quick dropdown can be used by Open Ticket plugins instead of the normal builders to speed up the process!
+ * 
+ * Because of the quick functionality, these dropdowns are less customisable by other plugins.
+ */
+export class ODQuickDropdown {
+    /**The id of this dropdown. */
+    id: ODId
+    /**The current data of this dropdown */
+    data: ODDropdownData = {
+        customId:"",
+        type:"string",
+        placeholder:null,
+        minValues:null,
+        maxValues:null,
+        disabled:false,
+        channelTypes:[],
+
+        options:[],
+        users:[],
+        roles:[],
+        channels:[],
+        mentionables:[]
+    }
+
+    constructor(id:ODValidId,data:ODDropdownData){
+        this.id = new ODId(id)
+        this.data = data
+    }
+
+    /**Build this dropdown & compile it for discord.js */
+    async build(): Promise<ODComponentBuildResult> {
+        try{
+            //create the discord.js dropdown
+            if (this.data.type == "string"){
+                const dropdown = new discord.StringSelectMenuBuilder()
+                dropdown.setCustomId(this.data.customId)
+                dropdown.setOptions(...this.data.options)
+                if (this.data.placeholder) dropdown.setPlaceholder(this.data.placeholder)
+                if (this.data.minValues) dropdown.setMinValues(this.data.minValues)
+                if (this.data.maxValues) dropdown.setMaxValues(this.data.maxValues)
+                if (this.data.disabled) dropdown.setDisabled(this.data.disabled)
+                
+                return {id:this.id,component:dropdown}
+
+            }else if (this.data.type == "user"){
+                const dropdown = new discord.UserSelectMenuBuilder()
+                dropdown.setCustomId(this.data.customId)
+                if (this.data.users.length > 0) dropdown.setDefaultUsers(...this.data.users.map((u) => u.id))
+                if (this.data.placeholder) dropdown.setPlaceholder(this.data.placeholder)
+                if (this.data.minValues) dropdown.setMinValues(this.data.minValues)
+                if (this.data.maxValues) dropdown.setMaxValues(this.data.maxValues)
+                if (this.data.disabled) dropdown.setDisabled(this.data.disabled)
+                
+                return {id:this.id,component:dropdown}
+
+            }else if (this.data.type == "role"){
+                const dropdown = new discord.RoleSelectMenuBuilder()
+                dropdown.setCustomId(this.data.customId)
+                if (this.data.roles.length > 0) dropdown.setDefaultRoles(...this.data.roles.map((r) => r.id))
+                if (this.data.placeholder) dropdown.setPlaceholder(this.data.placeholder)
+                if (this.data.minValues) dropdown.setMinValues(this.data.minValues)
+                if (this.data.maxValues) dropdown.setMaxValues(this.data.maxValues)
+                if (this.data.disabled) dropdown.setDisabled(this.data.disabled)
+                
+                return {id:this.id,component:dropdown}
+
+            }else if (this.data.type == "channel"){
+                const dropdown = new discord.ChannelSelectMenuBuilder()
+                dropdown.setCustomId(this.data.customId)
+                if (this.data.channels.length > 0) dropdown.setDefaultChannels(...this.data.channels.map((c) => c.id))
+                if (this.data.placeholder) dropdown.setPlaceholder(this.data.placeholder)
+                if (this.data.minValues) dropdown.setMinValues(this.data.minValues)
+                if (this.data.maxValues) dropdown.setMaxValues(this.data.maxValues)
+                if (this.data.disabled) dropdown.setDisabled(this.data.disabled)
+                
+                return {id:this.id,component:dropdown}
+
+            }else if (this.data.type == "mentionable"){
+                const dropdown = new discord.MentionableSelectMenuBuilder()
+
+                const values: ({type:discord.SelectMenuDefaultValueType.User,id:string}|{type:discord.SelectMenuDefaultValueType.Role,id:string})[] = []
+                this.data.mentionables.forEach((m) => {
+                    if (m instanceof discord.User){
+                        values.push({type:discord.SelectMenuDefaultValueType.User,id:m.id})
+                    }else{
+                        values.push({type:discord.SelectMenuDefaultValueType.Role,id:m.id})
+                    }
+                })
+
+                dropdown.setCustomId(this.data.customId)
+                if (this.data.mentionables.length > 0) dropdown.setDefaultValues(...values)
+                if (this.data.placeholder) dropdown.setPlaceholder(this.data.placeholder)
+                if (this.data.minValues) dropdown.setMinValues(this.data.minValues)
+                if (this.data.maxValues) dropdown.setMaxValues(this.data.maxValues)
+                if (this.data.disabled) dropdown.setDisabled(this.data.disabled)
+                
+                return {id:this.id,component:dropdown}
+            }else{
+                throw new Error("Tried to build an ODQuickDropdown with unknown type!")
+            }
+        }catch(err){
+            process.emit("uncaughtException",new ODSystemError("ODQuickDropdown:build(\""+this.id.value+"\") => Major Error (see next error)"))
             process.emit("uncaughtException",err)
             return {id:this.id,component:null}
         }
@@ -594,7 +759,7 @@ export class ODFileInstance {
  */
 export class ODFile<Source extends string,Params> extends ODBuilderImplementation<ODFileInstance,Source,Params,ODFileBuildResult> {
     /**Build this attachment & compile it for discord.js */
-    async build(source:Source, params:Params){
+    async build(source:Source, params:Params): Promise<ODFileBuildResult> {
         if (this.didCache && this.cache && this.allowCache) return this.cache
         
         try{
@@ -616,6 +781,48 @@ export class ODFile<Source extends string,Params> extends ODBuilderImplementatio
             return {id:this.id,file}
         }catch(err){
             process.emit("uncaughtException",new ODSystemError("ODFile:build(\""+this.id.value+"\") => Major Error (see next error)"))
+            process.emit("uncaughtException",err)
+            return {id:this.id,file:null}
+        }
+    }
+}
+
+/**## ODQuickFile `class`
+ * This is an Open Ticket quick file builder.
+ * 
+ * With this class, you can quickly create a file to use in a message.
+ * This quick file can be used by Open Ticket plugins instead of the normal builders to speed up the process!
+ * 
+ * Because of the quick functionality, these files are less customisable by other plugins.
+ */
+export class ODQuickFile {
+    /**The id of this file. */
+    id: ODId
+    /**The current data of this file */
+    data: ODFileData = {
+        file:"",
+        name:"file.txt",
+        description:null,
+        spoiler:false
+    }
+
+    constructor(id:ODValidId,data:ODFileData){
+        this.id = new ODId(id)
+        this.data = data
+    }
+
+    /**Build this attachment & compile it for discord.js */
+    async build(): Promise<ODFileBuildResult> {
+        try{
+            //create the discord.js attachment
+            const file = new discord.AttachmentBuilder(this.data.file)
+            file.setName(this.data.name ? this.data.name : "file.txt")
+            if (this.data.description) file.setDescription(this.data.description)
+            if (this.data.spoiler) file.setSpoiler(this.data.spoiler)
+            
+            return {id:this.id,file}
+        }catch(err){
+            process.emit("uncaughtException",new ODSystemError("ODQuickFile:build(\""+this.id.value+"\") => Major Error (see next error)"))
             process.emit("uncaughtException",err)
             return {id:this.id,file:null}
         }
@@ -795,7 +1002,7 @@ export class ODEmbedInstance {
  */
 export class ODEmbed<Source extends string,Params> extends ODBuilderImplementation<ODEmbedInstance,Source,Params,ODEmbedBuildResult> {
     /**Build this embed & compile it for discord.js */
-    async build(source:Source, params:Params){
+    async build(source:Source, params:Params): Promise<ODEmbedBuildResult> {
         if (this.didCache && this.cache && this.allowCache) return this.cache
         
         try{
@@ -830,6 +1037,71 @@ export class ODEmbed<Source extends string,Params> extends ODBuilderImplementati
             return {id:this.id,embed}
         }catch(err){
             process.emit("uncaughtException",new ODSystemError("ODEmbed:build(\""+this.id.value+"\") => Major Error (see next error)"))
+            process.emit("uncaughtException",err)
+            return {id:this.id,embed:null}
+        }
+    }
+}
+
+/**## ODQuickEmbed `class`
+ * This is an Open Ticket quick embed builder.
+ * 
+ * With this class, you can quickly create a embed to use in a message.
+ * This quick embed can be used by Open Ticket plugins instead of the normal builders to speed up the process!
+ * 
+ * Because of the quick functionality, these embeds are less customisable by other plugins.
+ */
+export class ODQuickEmbed {
+    /**The id of this embed. */
+    id: ODId
+    /**The current data of this embed */
+    data: ODEmbedData = {
+        title:null,
+        color:null,
+        url:null,
+        description:null,
+        authorText:null,
+        authorImage:null,
+        authorUrl:null,
+        footerText:null,
+        footerImage:null,
+        image:null,
+        thumbnail:null,
+        fields:[],
+        timestamp:null
+    }
+
+    constructor(id:ODValidId,data:ODEmbedData){
+        this.id = new ODId(id)
+        this.data = data
+    }
+
+    /**Build this embed & compile it for discord.js */
+    async build(): Promise<ODEmbedBuildResult> {
+        try{
+            //create the discord.js embed
+            const embed = new discord.EmbedBuilder()
+            if (this.data.title) embed.setTitle(this.data.title)
+            if (this.data.color) embed.setColor(this.data.color)
+            if (this.data.url) embed.setURL(this.data.url)
+            if (this.data.description) embed.setDescription(this.data.description)
+            if (this.data.authorText) embed.setAuthor({
+                name:this.data.authorText,
+                iconURL:this.data.authorImage ?? undefined,
+                url:this.data.authorUrl ?? undefined
+            })
+            if (this.data.footerText) embed.setFooter({
+                text:this.data.footerText,
+                iconURL:this.data.footerImage ?? undefined,
+            })
+            if (this.data.image) embed.setImage(this.data.image)
+            if (this.data.thumbnail) embed.setThumbnail(this.data.thumbnail)
+            if (this.data.timestamp) embed.setTimestamp(this.data.timestamp)
+            if (this.data.fields.length > 0) embed.setFields(this.data.fields)
+            
+            return {id:this.id,embed}
+        }catch(err){
+            process.emit("uncaughtException",new ODSystemError("ODQuickEmbed:build(\""+this.id.value+"\") => Major Error (see next error)"))
             process.emit("uncaughtException",err)
             return {id:this.id,embed:null}
         }
