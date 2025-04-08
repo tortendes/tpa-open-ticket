@@ -385,7 +385,7 @@ export const defaultOptionsStructure = new api.ODCheckerArrayStructure("opendisc
     //WEBSITE
     {name:"website",priority:0,properties:[{key:"type",value:"website"}],checker:new api.ODCheckerObjectStructure("opendiscord:options-website",{children:[
         {key:"id",optional:false,priority:0,checker:new api.ODCheckerCustomStructure_UniqueId("opendiscord:website-id","openticket","option-ids",{regex:/^[A-Za-z0-9-éèçàêâôûî]+$/,minLength:3,maxLength:40})},
-        {key:"name",optional:false,priority:0,checker:new api.ODCheckerStringStructure("opendiscord:website-name",{minLength:2,maxLength:50})},
+        {key:"name",optional:false,priority:0,checker:new api.ODCheckerStringStructure("opendiscord:website-name",{minLength:2,maxLength:45})},
         {key:"description",optional:false,priority:0,checker:new api.ODCheckerStringStructure("opendiscord:website-description",{maxLength:256})},
         
         //WEBSITE BUTTON
@@ -410,7 +410,7 @@ export const defaultOptionsStructure = new api.ODCheckerArrayStructure("opendisc
     //REACTION ROLES
     {name:"role",priority:0,properties:[{key:"type",value:"role"}],checker:new api.ODCheckerObjectStructure("opendiscord:options-role",{children:[
         {key:"id",optional:false,priority:0,checker:new api.ODCheckerCustomStructure_UniqueId("opendiscord:role-id","openticket","option-ids",{regex:/^[A-Za-z0-9-éèçàêâôûî]+$/,minLength:3,maxLength:40})},
-        {key:"name",optional:false,priority:0,checker:new api.ODCheckerStringStructure("opendiscord:role-name",{minLength:2,maxLength:50})},
+        {key:"name",optional:false,priority:0,checker:new api.ODCheckerStringStructure("opendiscord:role-name",{minLength:2,maxLength:45})},
         {key:"description",optional:false,priority:0,checker:new api.ODCheckerStringStructure("opendiscord:role-description",{maxLength:256})},
 
         //ROLE BUTTON
