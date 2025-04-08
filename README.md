@@ -96,10 +96,9 @@ A big thanks to all our sponsors! Without them, it wouldn't be possible to creat
 > ### [📔 Visit Documentation](https://otdocs.dj-dj.be)
 
 ## 📸 Preview
-<img alt="Ticket Message" width="350px" src="https://apis.dj-dj.be/cdn/openticket/preview-v4/ticket.png">
-<img alt="Ticket Stats Message" width="350px" src="https://apis.dj-dj.be/cdn/openticket/preview-v4/stats.png">
-<img alt="Example Panel 1" width="350px" src="https://apis.dj-dj.be/cdn/openticket/preview-v4/panel-1.png">
-<img alt="Example Panel 2" width="350px" src="https://apis.dj-dj.be/cdn/openticket/preview-v4/panel-2.png">
+<img alt="An example of a panel." src="https://apis.dj-dj.be/cdn/openticket/preview-v4/panel-examples.png">
+<img alt="An example of a ticket message." src="https://apis.dj-dj.be/cdn/openticket/preview-v4/ticket-example.png">
+<img alt="Examples of built-in commands." src="https://apis.dj-dj.be/cdn/openticket/preview-v4/command-examples.png">
 
 ## 🧩 Plugins
 **Download all plugins in our [Official Plugin Repository](https://github.com/open-discord-bots/plugins)!**<br>
