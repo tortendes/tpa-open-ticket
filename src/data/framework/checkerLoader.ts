@@ -441,7 +441,7 @@ export const defaultPanelsStructure = new api.ODCheckerArrayStructure("opendisco
     {key:"id",optional:false,priority:0,checker:new api.ODCheckerCustomStructure_UniqueId("opendiscord:panel-id","openticket","panel-ids",{regex:/^[A-Za-z0-9-éèçàêâôûî]+$/,minLength:3,maxLength:40})},
     {key:"name",optional:false,priority:0,checker:new api.ODCheckerStringStructure("opendiscord:panel-name",{minLength:3,maxLength:50})},
     {key:"dropdown",optional:false,priority:0,checker:new api.ODCheckerBooleanStructure("opendiscord:panel-dropdown",{})},
-    {key:"options",optional:false,priority:0,checker:new api.ODCheckerCustomStructure_UniqueIdArray("opendiscord:panel-options","openticket","option-ids","option-ids-used",{allowDoubles:false,maxLength:25})},
+    {key:"options",optional:false,priority:0,checker:new api.ODCheckerCustomStructure_UniqueIdArray("opendiscord:panel-options","openticket","option-ids","option-ids-used",{allowDoubles:false,minLength:1,maxLength:25})},
     
     //EMBED & TEXT
     {key:"text",optional:false,priority:0,checker:new api.ODCheckerStringStructure("opendiscord:panel-text",{maxLength:4096})},
