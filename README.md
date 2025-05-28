@@ -159,7 +159,7 @@ Without our translators, it wouldn't be possible to translate Open Ticket in so 
 |🔴 |🇸🇮 Slovenian          |[⭐ Contribute!](.github/CONTRIBUTING.md)|
 |🔴 |🇬🇷 Greek              |[⭐ Contribute!](.github/CONTRIBUTING.md)|
 |🔴 |❓ Kurdish            |[⭐ Contribute!](.github/CONTRIBUTING.md)|
-|🔴 |❓ Persian            |[⭐ Contribute!](.github/CONTRIBUTING.md)|
+|🟢 |🇮🇷 Persian            |zhavis                     |
 
 ## ⭐️ Star History
 Please give this repository a star if you like it.  
