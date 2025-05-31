@@ -68,10 +68,10 @@ A big thanks to all our sponsors! Without them, it wouldn't be possible to creat
 
 <table>
 <tr>
-<td><img src="https://github.com/roppl3r.png" alt="Profile Picture" width="100px"></td>
+<td><img src="https://github.com/guillee3.png" alt="Profile Picture" width="100px"></td>
 </tr>
 <tr>
-<td align="center"><a href="https://github.com/roppl3r"><b>roppl3r</b></a></td>
+<td align="center"><a href="https://github.com/guillee3"><b>guillee3</b></a></td>
 </tr>
 </table>
 
@@ -93,6 +93,13 @@ A big thanks to all our sponsors! Without them, it wouldn't be possible to creat
 >    - Fix these errors and restart the bot.
 > 6. Enjoy using Open Ticket!
 > ### [📔 Visit Documentation](https://otdocs.dj-dj.be)
+>
+> ### 🖥️ Recommended Hostings
+> - [⭐ **Peakhosting.nl**](https://peakhosting.nl/) - Official support for Open Ticket pterodactyl eggs.
+> - **Any Pterodactyl-Based Panel** - Easy installation & configuration.
+> - **A Virtual Private Server (VPS)** - Extra customisation & more stability. Recommended for large servers.
+> 
+> *❤️ Want to display your hosting here? Contact us in our [Discord server](https://discord.dj-dj.be)!*
 
 ## 📸 Preview
 <img alt="An example of a panel." src="https://apis.dj-dj.be/cdn/openticket/preview-v4/panel-examples.png">
