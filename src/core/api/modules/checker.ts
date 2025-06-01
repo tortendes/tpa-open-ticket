@@ -1398,10 +1398,13 @@ export class ODCheckerCustomStructure_UniqueIdArray extends ODCheckerArrayStruct
 
             let localQuit = false
             value.forEach((id,index) => {
-                if (typeof id != "string") return
                 const localLt = checker.locationTraceDeref(lt)
                 localLt.push(index)
-                if (uniqueArray.includes(id)){
+                if (typeof id != "string") {
+                    //id isn't a string
+                    checker.createMessage("opendiscord:id-invalid-type", "error", "This id needs to be a string!", localLt, null, [], this.id, (this.options.docs ?? null))
+                    localQuit = true
+                }else if (uniqueArray.includes(id)) {
                     //exists
                     if (usedScope){
                         const current: string[] = checker.storage.get(source,usedScope) ?? []
