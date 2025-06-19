@@ -165,6 +165,7 @@ Without our translators, it wouldn't be possible to translate Open Ticket in so 
 |🤖 |🇬🇷 Greek              |HanumeshGupta & dragonblade|
 |🤖 |🇸🇮 Slovenian          |HanumeshGupta & dragonblade|
 |🤖 |🇰🇷 Korean             |HanumeshGupta & dragonblade|
+|🤖 |🇮🇳 Tamil              |HanumeshGupta & dragonblade|
 |🤖 |🇨🇳 Simplified Chinese |HanumeshGupta & dragonblade|
 |🤖 |❓ Kurdish            |HanumeshGupta & dragonblade|
 |🔴 |🇨🇳 Traditional Chinese|[⭐ Contribute!](.github/CONTRIBUTING.md)|
