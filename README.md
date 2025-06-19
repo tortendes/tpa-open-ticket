@@ -155,6 +155,7 @@ Without our translators, it wouldn't be possible to translate Open Ticket in so 
 |🟢 |🇳🇴 Norwegian          |NoOneNook                  |
 |🟢 |🇸🇪 Swedish            |NoOneNook                  |
 |🟢 |🇮🇷 Persian            |dysashop & zhavis          |
+|🟢 |🇧🇩 Bengali            |HanumeshGupta & dragonblade|
 |🤖 |🇪🇪 Estonian           |iamnotmega                 |
 |🤖 |🇫🇮 Finnish            |iamnotmega                 |
 |🤖 |🇷🇺 Russian            |NoOneNook                  |
@@ -165,8 +166,9 @@ Without our translators, it wouldn't be possible to translate Open Ticket in so 
 |🤖 |🇸🇮 Slovenian          |HanumeshGupta & dragonblade|
 |🤖 |🇰🇷 Korean             |HanumeshGupta & dragonblade|
 |🤖 |🇨🇳 Simplified Chinese |HanumeshGupta & dragonblade|
+|🤖 |❓ Kurdish            |HanumeshGupta & dragonblade|
 |🔴 |🇨🇳 Traditional Chinese|[⭐ Contribute!](.github/CONTRIBUTING.md)|
-|🔴 |❓ Kurdish            |[⭐ Contribute!](.github/CONTRIBUTING.md)|
+
 
 ## ⭐️ Star History
 Please give this repository a star if you like it.  
