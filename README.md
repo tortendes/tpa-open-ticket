@@ -160,11 +160,11 @@ Without our translators, it wouldn't be possible to translate Open Ticket in so 
 |🤖 |🇷🇺 Russian            |NoOneNook                  |
 |🤖 |🇱🇻 Latvian            |NoOneNook                  |
 |🤖 |🇻🇳 Vietnamese         |ngocdiep2006               |
-|🤖 |🇯🇵 Japanese           |HanumeshGupta               |
-|🤖 |🇬🇷 Greek              |HanumeshGupta               |
-|🤖 |🇸🇮 Slovenian          |HanumeshGupta               |
-|🔴 |🇰🇷 Korean             |[⭐ Contribute!](.github/CONTRIBUTING.md)|
-|🔴 |🇨🇳 Simplified Chinese |[⭐ Contribute!](.github/CONTRIBUTING.md)|
+|🤖 |🇯🇵 Japanese           |HanumeshGupta & dragonblade|
+|🤖 |🇬🇷 Greek              |HanumeshGupta & dragonblade|
+|🤖 |🇸🇮 Slovenian          |HanumeshGupta & dragonblade|
+|🤖 |🇰🇷 Korean             |HanumeshGupta & dragonblade|
+|🤖 |🇨🇳 Simplified Chinese |HanumeshGupta & dragonblade|
 |🔴 |🇨🇳 Traditional Chinese|[⭐ Contribute!](.github/CONTRIBUTING.md)|
 |🔴 |❓ Kurdish            |[⭐ Contribute!](.github/CONTRIBUTING.md)|
 
