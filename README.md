@@ -20,7 +20,7 @@
 
 <p align="center">
 Open Ticket is the most advanced & customisable discord ticket bot that you will ever find! You can customise up to 300+ variables! This includes <code>Html Transcripts</code>, <code>Advanced Plugins</code>, <code>Custom Embeds</code>, <code>Questions/Modals</code>, <code>Stats</code> & more!
-You're also able to customise every little aspect of the bot! From embeds to transcripts. Open Ticket is also translated in more than <code>28 Languages</code>! If you need any help, feel free to join our <a href="https://discord.dj-dj.be">discord server</a>!
+You're also able to customise every little aspect of the bot! From embeds to transcripts. Open Ticket is also translated in more than <code>36 Languages</code>! If you need any help, feel free to join our <a href="https://discord.dj-dj.be">discord server</a>!
 </p>
 
 <p align="center"><b>⭐️ Help us grow by giving a star! ⭐️</b></p>
@@ -32,7 +32,7 @@ You're also able to customise every little aspect of the bot! From embeds to tra
 - **📈 scalable** - Open Ticket is made to handle huge servers! (Already tested in **servers with 100k members**)
 - **📄 HTML transcripts** - Make use of the most customisable, beautiful and easy-to-use HTML Transcripts!
 - **✅ ticket actions** - Close, Reopen, Delete, Claim, Pin, Rename & Move all your tickets!
-- **🇬🇧 translation** - Open Ticket has been translated in more than **28 languages** by our community!
+- **🇬🇧 translation** - Open Ticket has been translated in more than **36 languages** by our community!
 - **🎨 customisation** - Open Ticket has been created around customisation, everything can be customised!
 - **🖥️ interactions** - The bot has full support for Buttons, Dropdowns, Slash Commands and Modals!
 - **∞ unlimited** - Create an infinite amount of tickets & panels!
@@ -127,49 +127,49 @@ A list of people that contributed or provided the most support for Open Ticket.
 </table>
 
 ### 💬 Translators
-Without our translators, it wouldn't be possible to translate Open Ticket in so many languages!
-- 🟢 Available - 🤖 Made Using AI - 🔴 Unavailable/Outdated
+With the amazing support of our translators, we've been able to translate Open Ticket in more than **36 languages**!  
+As a result, you're able to enjoy using Open Ticket in your own native language.
+- **Categories: 🟢 Available - 🤖 Made Using AI - 🔴 Unavailable/Outdated**
 
-|🔍 |Language             |Maintainer (Github/Discord) |
-|---|---------------------|----------------------------|
-|🟢 |🇬🇧 English            |djj123dj                   |
-|🟢 |🇳🇱 Dutch              |djj123dj                   |
-|🟢 |🇩🇪 German             |benzorich                  |
-|🟢 |🇪🇸 Spanish            |redactado & josuens        |
-|🟢 |🇵🇹 Portuguese         |quiradon                   |
-|🟢 |❓ Catalan            |guillee3                   |
-|🟢 |🇨🇿 Czech              |spyeye_                    |
-|🟢 |🇭🇺 Hungarian          |kornel0706                 |
-|🟢 |🇷🇴 Romanian           |sankedev                   |
-|🟢 |🇺🇦 Ukrainian          |anderskiy                  |
-|🟢 |🇮🇩 Indonesian         |erxg                       |
-|🟢 |🇮🇹 Italian            |fraden1mvp.                |
-|🟢 |🇩🇰 Danish             |the_gamer                  |
-|🟢 |🇹🇭 Thai               |modshd                     |
-|🟢 |🇹🇷 Turkish            |palestinian                |
-|🟢 |🇫🇷 French             |guillee.3                  |
-|🟢 |🇦🇪 Arabic             |palestinian                |
-|🟢 |🇮🇳 Hindi              |an_developer               |
-|🟢 |🇱🇹 Lithuanian         |tsgindrius                 |
-|🟢 |🇵🇱 Polish             |danoglez                   |
-|🟢 |🇳🇴 Norwegian          |NoOneNook                  |
-|🟢 |🇸🇪 Swedish            |NoOneNook                  |
-|🟢 |🇮🇷 Persian            |dysashop & zhavis          |
-|🟢 |🇧🇩 Bengali            |HanumeshGupta & dragonblade|
-|🤖 |🇪🇪 Estonian           |iamnotmega                 |
-|🤖 |🇫🇮 Finnish            |iamnotmega                 |
-|🤖 |🇷🇺 Russian            |NoOneNook                  |
-|🤖 |🇱🇻 Latvian            |NoOneNook                  |
-|🤖 |🇻🇳 Vietnamese         |ngocdiep2006               |
-|🤖 |🇯🇵 Japanese           |HanumeshGupta & dragonblade|
-|🤖 |🇬🇷 Greek              |HanumeshGupta & dragonblade|
-|🤖 |🇸🇮 Slovenian          |HanumeshGupta & dragonblade|
-|🤖 |🇰🇷 Korean             |HanumeshGupta & dragonblade|
-|🤖 |🇮🇳 Tamil              |HanumeshGupta & dragonblade|
-|🤖 |🇨🇳 Simplified Chinese |HanumeshGupta & dragonblade|
-|🤖 |❓ Kurdish            |HanumeshGupta & dragonblade|
+|🔍 |Languages (36)        |Maintainer (Github/Discord)    |
+|---|---------------------|--------------------------------|
+|🟢 |🇬🇧 English            |djj123dj                       |
+|🟢 |🇳🇱 Dutch              |djj123dj                       |
+|🟢 |🇩🇪 German             |benzorich                      |
+|🟢 |🇪🇸 Spanish            |redactado & josuens            |
+|🟢 |🇵🇹 Portuguese         |quiradon                       |
+|🟢 |❓ Catalan            |guillee3                       |
+|🟢 |🇨🇿 Czech              |spyeye_                        |
+|🟢 |🇭🇺 Hungarian          |kornel0706                     |
+|🟢 |🇷🇴 Romanian           |sankedev                       |
+|🟢 |🇺🇦 Ukrainian          |anderskiy                      |
+|🟢 |🇮🇩 Indonesian         |erxg                           |
+|🟢 |🇮🇹 Italian            |fraden1mvp.                    |
+|🟢 |🇩🇰 Danish             |the_gamer                      |
+|🟢 |🇹🇭 Thai               |modshd                         |
+|🟢 |🇹🇷 Turkish            |palestinian                    |
+|🟢 |🇫🇷 French             |guillee.3                      |
+|🟢 |🇦🇪 Arabic             |palestinian                    |
+|🟢 |🇮🇳 Hindi              |an_developer                   |
+|🟢 |🇱🇹 Lithuanian         |tsgindrius                     |
+|🟢 |🇵🇱 Polish             |danoglez                       |
+|🟢 |🇳🇴 Norwegian          |NoOneNook                      |
+|🟢 |🇸🇪 Swedish            |NoOneNook                      |
+|🟢 |🇮🇷 Persian            |dysashop & zhavis              |
+|🟢 |🇧🇩 Bengali            |HanumeshGupta                  |
+|🤖 |🇪🇪 Estonian           |iamnotmega                     |
+|🤖 |🇫🇮 Finnish            |iamnotmega                     |
+|🤖 |🇷🇺 Russian            |NoOneNook                      |
+|🤖 |🇱🇻 Latvian            |NoOneNook                      |
+|🤖 |🇻🇳 Vietnamese         |ngocdiep2006                   |
+|🤖 |🇯🇵 Japanese           |HanumeshGupta                  |
+|🤖 |🇬🇷 Greek              |HanumeshGupta                  |
+|🤖 |🇸🇮 Slovenian          |HanumeshGupta                  |
+|🤖 |🇰🇷 Korean             |HanumeshGupta                  |
+|🤖 |🇮🇳 Tamil              |HanumeshGupta                  |
+|🤖 |🇨🇳 Simplified Chinese |HanumeshGupta                  |
+|🤖 |❓ Kurdish            |HanumeshGupta                  |
 |🔴 |🇨🇳 Traditional Chinese|[⭐ Contribute!](.github/CONTRIBUTING.md)|
-
 
 ## ⭐️ Star History
 Please give this repository a star if you like it.  
