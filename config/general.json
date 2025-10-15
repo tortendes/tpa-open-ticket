@@ -44,7 +44,7 @@
         "enableDeleteWithoutTranscript":true,
 
         "logs":{
-            "enabled":false,
+            "enabled":true,
             "channel":"1427477872968335400"
         },
         
