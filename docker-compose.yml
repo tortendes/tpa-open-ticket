@@ -5,6 +5,6 @@ services:
     volumes:
       - openticket:/home/container
     restart: unless-stopped
-    container_name: open-ticket
+    container_name: tpa-open-ticket
 volumes:
   openticket:
