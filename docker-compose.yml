@@ -1,11 +1,10 @@
 # Docker Compose for Open Ticket v4
-version: '3'
 services:
   openticket:
     build: .
     volumes:
       - openticket:/home/container
-    restart: no
+    restart: unless-stopped
     container_name: open-ticket
 volumes:
   openticket:

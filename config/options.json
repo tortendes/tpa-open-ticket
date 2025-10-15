@@ -100,7 +100,7 @@
         "questions":["general-inquiry-1","general-inquiry-2"],
         "channel":{
             "prefix":"anonymous-tip-",
-            "suffix":"user-name",
+            "suffix":"random-hex",
             "category":"1362788401274818620",
             "closedCategory":"1428059319378640948",
             "backupCategory":"",
@@ -142,8 +142,8 @@
                 "timestamp":true
             },
             "ping":{
-                "@here":true,
-                "@everyone":true,
+                "@here":false,
+                "@everyone":false,
                 "custom":["1358465173186281803"]
             }
         },
