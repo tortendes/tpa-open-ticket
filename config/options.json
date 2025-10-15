@@ -186,7 +186,7 @@
         "channel":{
             "prefix":"general-inquiry-",
             "suffix":"counter-dynamic",
-            "category":"1362788401274818620",
+            "category":"1361461198427656283",
             "closedCategory":"1428059319378640948",
             "backupCategory":"",
             "claimedCategory":[],
@@ -219,8 +219,8 @@
                 "description":"Thank you for reaching out to TPA News! A team member will respond to your inquiry as soon as possible.",
                 "customColor":"#1D1DC4",
 
-                "image":"https://files.catbox.moe/nafqoa.png",
-                "thumbnail":"https://files.catbox.moe/o0x93w.png",
+                "image":"https://files.catbox.moe/o0x93w.png",
+                "thumbnail":"https://files.catbox.moe/nafqoa.png",
                 "fields":[
                     {"name":"field name","value":"field value","inline":false}
                 ],
