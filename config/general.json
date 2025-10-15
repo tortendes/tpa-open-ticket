@@ -20,7 +20,7 @@
     "status":{
         "enabled":true,
         "type":"listening",
-        "text":"for tickets",
+        "text":"new tickets",
         "status":"online"
     },
 
