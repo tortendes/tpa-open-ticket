@@ -1,42 +1,40 @@
 {
     "general":{
-        "enabled":false,
-
-        "enableChannel":false,
-        "enableCreatorDM":false,
+        "enabled":true,
+        "enableChannel":true,
+        "enableCreatorDM":true,
         "enableParticipantDM":false,
         "enableActiveAdminDM":false,
         "enableEveryAdminDM":false,
-
-        "channel":"transcript channel id (or leave empty)",
-        "mode":"html OR text"
+        "channel":"1427594531087323267",
+        "mode":"html"
     },
     "embedSettings":{
-        "customColor":"#f8ab00 (or leave empty)",
-        "listAllParticipants":false,
-        "includeTicketStats":false
+        "customColor":"#F88020",
+        "listAllParticipants":true,
+        "includeTicketStats":true
     },
     "textTranscriptStyle":{
-        "layout":"simple OR normal OR detailed",
+        "layout":"detailed",
         "includeStats":true,
-        "includeIds":false,
+        "includeIds":true,
         "includeEmbeds":true,
         "includeFiles":true,
         "includeBotMessages":true,
 
-        "fileMode":"custom OR channel-name OR channel-id OR user-name OR user-id",
-        "customFileName":"this-is-a-transcript (or leave empty)"
+        "fileMode":"channel-name",
+        "customFileName":"this-is-a-transcript"
     },
     "htmlTranscriptStyle":{
         "background":{
             "enableCustomBackground":false,
-            "backgroundColor":"#f8ba00 (or leave empty)",
-            "backgroundImage":"https://www.example.com/image.png (or leave empty)" 
+            "backgroundColor":"#f8ba00",
+            "backgroundImage":"https://www.example.com/image.png" 
         },
         "header":{
-            "enableCustomHeader":false,
+            "enableCustomHeader":true,
             "backgroundColor":"#202225",
-            "decoColor":"#f8ba00",
+            "decoColor":"#F88020",
             "textColor":"#ffffff"
         },
         "stats":{
@@ -48,8 +46,8 @@
             "hideTextColor":"#ffffff"
         },
         "favicon":{
-            "enableCustomFavicon":false,
-            "imageUrl":"https://t.dj-dj.be/favicon.png"
+            "enableCustomFavicon":true,
+            "imageUrl":"https://files.catbox.moe/7cf5xt.png"
         }
     }
 }

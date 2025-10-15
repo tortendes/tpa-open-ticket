@@ -1,23 +1,23 @@
 [
     {
-        "id":"example-embed",
-        "name":"Example Embed",
-        "dropdown":false,
-        "options":["example-ticket","example-website","example-role"],
+        "id":"tpa-news-panel",
+        "name":"tpa-news-panel",
+        "dropdown":true,
+        "options":["tpa-news-hiring","tpa-news-general-inquiry","tpa-news-tip"],
 
         "text":"",
         "embed":{
             "enabled":true,
-            "title":"Tickets:",
-            "description":"Create a ticket by clicking one of the buttons below!",
+            "title":"TPA News Concierge",
+            "description":"Welcome to TPA News' concierge.\nPlease select an option below to open a ticket with us.",
             
-            "customColor":"#f8ab00 (or leave empty)",
-            "url":"https://openticket.dj-dj.be (or leave empty)",
+            "customColor":"#1D1DC4",
+            "url":"https://news.tpa.demcraft.site",
 
-            "image":"https://www.example.com/image.png (or leave empty)",
-            "thumbnail":"https://www.example.com/image.png (or leave empty)",
+            "image":"https://files.catbox.moe/zlm7tv.png",
+            "thumbnail":"https://files.catbox.moe/nafqoa.png",
             
-            "footer":"Open Ticket v4.0.7 (or leave empty)",
+            "footer":"TPA News - news as simple as that.",
             "fields":[
                 {"name":"field name","value":"field value","inline":false}
             ],
@@ -25,11 +25,111 @@
         },
         "settings":{
             "dropdownPlaceholder":"Create a ticket!",
-
             "enableMaxTicketsWarningInText":false,
             "enableMaxTicketsWarningInEmbed":true,
+            "describeOptionsLayout":"simple",
+            "describeOptionsCustomTitle":"",
+            "describeOptionsInText":false,
+            "describeOptionsInEmbedFields":true,
+            "describeOptionsInEmbedDescription":false
+        }
+    },
+    {
+        "id":"tpa-digital-convergence",
+        "name":"TPA Digital Convergence",
+        "dropdown":true,
+        "options":["tpa-digital-convergence-inquiry", "tpa-digital-convergence-help"],
+        "text":"",
+        "embed":{
+            "enabled":true,
+            "title":"TPA Digital Convergence Concierge",
+            "description":"Welcome to TPA Digital Convergence's concierge.\nPlease select an option below to open a ticket with us.",
+            
+            "customColor":"#1D1DC4",
+            "url":"https://digital.tpa.demcraft.site",
 
-            "describeOptionsLayout":"simple OR normal OR detailed",
+            "image":"https://files.catbox.moe/wf2sxu.png",
+            "thumbnail":"https://files.catbox.moe/u2xh1n.png",
+            
+            "footer":"TPA Digital Convergence - evolving the world, one click at a time.",
+            "fields":[
+                {"name":"field name","value":"field value","inline":false}
+            ],
+            "timestamp":false
+        },
+        "settings":{
+            "dropdownPlaceholder":"Create a ticket!",
+            "enableMaxTicketsWarningInText":false,
+            "enableMaxTicketsWarningInEmbed":true,
+            "describeOptionsLayout":"simple",
+            "describeOptionsCustomTitle":"",
+            "describeOptionsInText":false,
+            "describeOptionsInEmbedFields":true,
+            "describeOptionsInEmbedDescription":false
+        }
+    },
+    {
+        "id":"hr-support",
+        "name":"TPA HR Panel",
+        "dropdown":true,
+        "options":["hr-document", "hr-leave", "hr-concerns"],
+        "text":"",
+        "embed":{
+            "enabled":true,
+            "title":"Welcome to the HR Desk!",
+            "description":"You can request any HR services here!",
+            
+            "customColor":"#7289da",
+            "url":"https://tpa.demcraft.site",
+
+            "image":"https://files.catbox.moe/zcd7q4.png",
+            "thumbnail":"https://files.catbox.moe/7cf5xt.png",
+            
+            "footer":"Create what you wanna make.",
+            "fields":[
+                {"name":"field name","value":"field value","inline":false}
+            ],
+            "timestamp":false
+        },
+        "settings":{
+            "dropdownPlaceholder":"Create a ticket!",
+            "enableMaxTicketsWarningInText":false,
+            "enableMaxTicketsWarningInEmbed":true,
+            "describeOptionsLayout":"simple",
+            "describeOptionsCustomTitle":"",
+            "describeOptionsInText":false,
+            "describeOptionsInEmbedFields":true,
+            "describeOptionsInEmbedDescription":false
+        }
+    },
+    {
+        "id":"it-support",
+        "name":"TPA IT Panel",
+        "dropdown":false,
+        "options":["it-support"],
+        "text":"",
+        "embed":{
+            "enabled":true,
+            "title":"Welcome to the IT Desk!",
+            "description":"Something brok within TPA? Screm for help right here.",
+            
+            "customColor":"#7289da",
+            "url":"https://tpa.demcraft.site",
+
+            "image":"https://files.catbox.moe/bzwgu6.png",
+            "thumbnail":"https://files.catbox.moe/7cf5xt.png",
+            
+            "footer":"Create what you wanna make.",
+            "fields":[
+                {"name":"field name","value":"field value","inline":false}
+            ],
+            "timestamp":false
+        },
+        "settings":{
+            "dropdownPlaceholder":"Create a ticket!",
+            "enableMaxTicketsWarningInText":false,
+            "enableMaxTicketsWarningInEmbed":true,
+            "describeOptionsLayout":"simple",
             "describeOptionsCustomTitle":"",
             "describeOptionsInText":false,
             "describeOptionsInEmbedFields":true,

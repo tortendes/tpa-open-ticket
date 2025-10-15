@@ -1,31 +1,26 @@
 [
     {
-        "id":"example-ticket",
-        "name":"Question",
-        "description":"Create this ticket if you have a question! (or leave empty)",
-        "type":"ticket",
-
+        "id":"tpa-news-hiring",
+        "name":"Apply to TPA News",
+        "description":"Want to join Redmont's leading news organization? Click here to apply.",
+        "type":"ticket", 
         "button":{
-            "emoji":"🎫 (or leave empty)",
-            "label":"question (or leave empty)",
-            "color":"gray OR red OR green OR blue"
+            "emoji":"💼",
+            "label":"Apply Now",
+            "color":"blue"
         },
-
-        "ticketAdmins":["discord role id"],
-        "readonlyAdmins":["discord role id"],
+        "ticketAdmins":["1384571389888954560", "1382349946652725400", "1382349744143077446", "1358464969355563213"],
+        "readonlyAdmins":[],
         "allowCreationByBlacklistedUsers":false,
-        "questions":["example-question-1","example-question-2"],
-
+        "questions":["hiring-question-1","hiring-question-2", "hiring-question-3"],
         "channel":{
-            "prefix":"question-",
-            "suffix":"user-name OR user-id OR random-number OR random-hex OR counter-dynamic OR counter-fixed",
-            "category":"category id (or leave empty)",
-            "closedCategory":"category id (or leave empty)",
-            "backupCategory":"category id (or leave empty)",
-            "claimedCategory":[
-                {"user":"user id","category":"category id"}
-            ],
-            "description":"This is a question ticket (or leave empty)"
+            "prefix":"news-hiring-",
+            "suffix":"counter-dynamic",
+            "category":"1384561022911910069",
+            "closedCategory":"1428059319378640948",
+            "backupCategory":"",
+            "claimedCategory":[],
+            "description":"A TPA News Hiring Ticket."
         },
         
         "dmMessage":{
@@ -50,8 +45,76 @@
             "text":"",
             "embed":{
                 "enabled":true,
-                "title":"Question Ticket",
-                "description":"Thank you for creating a 'Question' ticket in our server!\nOur support team will help you as soon as possible!",
+                "title":"Thank you for your interest in TPA News.",
+                "description":"Thank you for your interest in joining our growing organization! A HR employee will tend to this ticket within a few hours.",
+                "customColor":"#1D1DC4",
+
+                "image":"https://files.catbox.moe/o0x93w.png",
+                "thumbnail":"https://files.catbox.moe/nafqoa.png",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":true
+            },
+            "ping":{
+                "@here":true,
+                "@everyone":false,
+                "custom":["1384571389888954560"]
+            }
+        },
+        "autoclose":{
+            "enableInactiveHours":false,
+            "inactiveHours":24,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "autodelete":{
+            "enableInactiveDays":false,
+            "inactiveDays":7,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "cooldown":{
+            "enabled":true,
+            "cooldownMinutes":1440
+        },
+        "limits":{
+            "enabled":true,
+            "globalMaximum":20, 
+            "userMaximum":1
+        }
+    },
+    {
+        "id":"tpa-news-tip",
+        "name":"Send an Anonymous Tip",
+        "description":"Caught something newsworthy? Send us an anonymous tip!",
+        "type":"ticket", 
+        "button":{
+            "emoji":"🤫",
+            "label":"Send Tip",
+            "color":"blue"
+        },
+        "ticketAdmins":["1382349946652725400", "1382349744143077446", "1358464969355563213"],
+        "readonlyAdmins":[],
+        "allowCreationByBlacklistedUsers":false,
+        "questions":["general-inquiry-1","general-inquiry-2"],
+        "channel":{
+            "prefix":"anonymous-tip-",
+            "suffix":"user-name",
+            "category":"1362788401274818620",
+            "closedCategory":"1428059319378640948",
+            "backupCategory":"",
+            "claimedCategory":[],
+            "description":"A TPA News Hiring Ticket."
+        },
+        
+        "dmMessage":{
+            "enabled":false,
+            "text":"Thank you for creating a ticket in our server! (or leave empty)",
+            "embed":{
+                "enabled":false,
+                "title":"Embed Title! (or leave empty)",
+                "description":"Description (or leave empty)",
                 "customColor":"#f8ab00 (or leave empty)",
 
                 "image":"https://www.example.com/image.png (or leave empty)",
@@ -60,11 +123,28 @@
                     {"name":"field name","value":"field value","inline":false}
                 ],
                 "timestamp":false
+            }
+        },
+        "ticketMessage":{
+            "enabled":true,
+            "text":"",
+            "embed":{
+                "enabled":true,
+                "title":"Anonymous Tip Received",
+                "description":"Thank you for your anonymous tip! Our team will review it shortly.",
+                "customColor":"#1D1DC4",
+
+                "image":"https://files.catbox.moe/823djt.png",
+                "thumbnail":"https://files.catbox.moe/nafqoa.png",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":true
             },
             "ping":{
                 "@here":true,
-                "@everyone":false,
-                "custom":["discord role id"]
+                "@everyone":true,
+                "custom":["1358465173186281803"]
             }
         },
         "autoclose":{
@@ -84,39 +164,602 @@
             "cooldownMinutes":10
         },
         "limits":{
-            "enabled":false,
-            "globalMaximum":20,
+            "enabled":true,
+            "globalMaximum":10, 
             "userMaximum":3
         }
     },
     {
-        "id":"example-website",
-        "name":"Website",
-        "description":"Go to our website.",
-        "type":"website",
-
+        "id":"tpa-news-general-inquiry",
+        "name":"Send as a question",
+        "description":"Have a general question for TPA News? Click here to ask!",
+        "type":"ticket", 
         "button":{
-            "emoji":"😃",
-            "label":"Visit our website"
+            "emoji":"❓",
+            "label":"Ask Us",
+            "color":"blue"
         },
+        "ticketAdmins":["1382349946652725400", "1382349744143077446", "1358464969355563213"],
+        "readonlyAdmins":["1358465173186281803"],
+        "allowCreationByBlacklistedUsers":false,
+        "questions":["general-inquiry-1","general-inquiry-2"],
+        "channel":{
+            "prefix":"general-inquiry-",
+            "suffix":"counter-dynamic",
+            "category":"1384561022911910069",
+            "closedCategory":"1428059319378640948",
+            "backupCategory":"",
+            "claimedCategory":[],
+            "description":"A TPA News Inquiry Ticket."
+        },
+        
+        "dmMessage":{
+            "enabled":false,
+            "text":"Thank you for creating a ticket in our server! (or leave empty)",
+            "embed":{
+                "enabled":false,
+                "title":"Embed Title! (or leave empty)",
+                "description":"Description (or leave empty)",
+                "customColor":"#f8ab00 (or leave empty)",
 
-        "url":"https://www.dj-dj.be"
+                "image":"https://www.example.com/image.png (or leave empty)",
+                "thumbnail":"https://www.example.com/image.png (or leave empty)",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":false
+            }
+        },
+        "ticketMessage":{
+            "enabled":true,
+            "text":"",
+            "embed":{
+                "enabled":true,
+                "title":"Your question has been submitted!",
+                "description":"Thank you for reaching out to TPA News! A team member will respond to your inquiry as soon as possible.",
+                "customColor":"#1D1DC4",
+
+                "image":"https://files.catbox.moe/nafqoa.png",
+                "thumbnail":"https://files.catbox.moe/o0x93w.png",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":true
+            },
+            "ping":{
+                "@here":true,
+                "@everyone":false,
+                "custom":["1384571389888954560"]
+            }
+        },
+        "autoclose":{
+            "enableInactiveHours":false,
+            "inactiveHours":24,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "autodelete":{
+            "enableInactiveDays":false,
+            "inactiveDays":7,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "cooldown":{
+            "enabled":false,
+            "cooldownMinutes":10
+        },
+        "limits":{
+            "enabled":true,
+            "globalMaximum":50, 
+            "userMaximum":3
+        }
     },
     {
-        "id":"example-role",
-        "name":"Update Ping",
-        "description":"Click here to get notified on updates!",
-        "type":"role",
-
+        "id":"tpa-digital-convergence-help",
+        "name":"Create Support Ticket",
+        "description": "For concerns about Billing, Accounts, Services, etc.",
+        "type":"ticket", 
         "button":{
-            "emoji":"📢",
-            "label":"Update Ping",
-            "color":"gray OR red OR green OR blue"
+            "emoji":"📞",
+            "label":"Contact Support",
+            "color":"gray"
         },
+        "ticketAdmins":["1382349946652725400", "1382349744143077446", "1358464969355563213"],
+        "readonlyAdmins":[],
+        "allowCreationByBlacklistedUsers":false,
+        "questions":["digital-convergence-1","digital-convergence-2"],
+        "channel":{
+            "prefix":"support-",
+            "suffix":"user-name",
+            "category":"1428048419112357888",
+            "closedCategory":"1428059319378640948",
+            "backupCategory":"",
+            "claimedCategory":[],
+            "description":"A TPA News Hiring Ticket."
+        },
+        
+        "dmMessage":{
+            "enabled":false,
+            "text":"Thank you for creating a ticket in our server! (or leave empty)",
+            "embed":{
+                "enabled":false,
+                "title":"Embed Title! (or leave empty)",
+                "description":"Description (or leave empty)",
+                "customColor":"#f8ab00 (or leave empty)",
 
-        "roles":["discord role id"],
-        "mode":"add&remove OR remove OR add",
-        "removeRolesOnAdd":["discord role id"],
-        "addOnMemberJoin":false
+                "image":"https://www.example.com/image.png (or leave empty)",
+                "thumbnail":"https://www.example.com/image.png (or leave empty)",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":false
+            }
+        },
+        "ticketMessage":{
+            "enabled":true,
+            "text":"",
+            "embed":{
+                "enabled":true,
+                "title":"Support Ticket",
+                "description":"Thank you for reaching out to TPA Digital Convergence, a support representative will be with you shortly.",
+                "customColor":"#1A1A1A",
+
+                "image":"https://files.catbox.moe/wsrmwc.png",
+                "thumbnail":"https://files.catbox.moe/u2xh1n.png",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":true
+            },
+            "ping":{
+                "@here":false,
+                "@everyone":false,
+                "custom":["1428045868178735104"]
+            }
+        },
+        "autoclose":{
+            "enableInactiveHours":false,
+            "inactiveHours":24,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "autodelete":{
+            "enableInactiveDays":false,
+            "inactiveDays":7,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "cooldown":{
+            "enabled":false,
+            "cooldownMinutes":10
+        },
+        "limits":{
+            "enabled":true,
+            "globalMaximum":10, 
+            "userMaximum":3
+        }
+    },
+    {
+        "id":"hr-concerns",
+        "name":"General Concerns",
+        "description": "Consult with the HR Team",
+        "type":"ticket", 
+        "button":{
+            "emoji":"📃",
+            "label":"Contact HR",
+            "color":"gray"
+        },
+        "ticketAdmins":["1384571389888954560"],
+        "readonlyAdmins":[],
+        "allowCreationByBlacklistedUsers":false,
+        "questions":["general-inquiry-2"],
+        "channel":{
+            "prefix":"doc-",
+            "suffix":"user-name",
+            "category":"1384561022911910069",
+            "closedCategory":"1428059319378640948",
+            "backupCategory":"",
+            "claimedCategory":[],
+            "description":"A HR Ticket."
+        },
+        
+        "dmMessage":{
+            "enabled":false,
+            "text":"Thank you for creating a ticket in our server! (or leave empty)",
+            "embed":{
+                "enabled":false,
+                "title":"Embed Title! (or leave empty)",
+                "description":"Description (or leave empty)",
+                "customColor":"#f8ab00 (or leave empty)",
+
+                "image":"https://www.example.com/image.png (or leave empty)",
+                "thumbnail":"https://www.example.com/image.png (or leave empty)",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":false
+            }
+        },
+        "ticketMessage":{
+            "enabled":true,
+            "text":"",
+            "embed":{
+                "enabled":true,
+                "title":"General Inquiry",
+                "description":"Thank you for opening a ticket, a Human Resources employee will be with you shortly.",
+                "customColor":"#7289da",
+
+                "image":"https://files.catbox.moe/zcd7q4.png",
+                "thumbnail":"https://files.catbox.moe/7cf5xt.png",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":true
+            },
+            "ping":{
+                "@here":false,
+                "@everyone":false,
+                "custom":["1384571389888954560"]
+            }
+        },
+        "autoclose":{
+            "enableInactiveHours":false,
+            "inactiveHours":24,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "autodelete":{
+            "enableInactiveDays":false,
+            "inactiveDays":7,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "cooldown":{
+            "enabled":false,
+            "cooldownMinutes":10
+        },
+        "limits":{
+            "enabled":true,
+            "globalMaximum":10, 
+            "userMaximum":1
+        }
+    },
+    {
+        "id":"hr-document",
+        "name":"Request Documents",
+        "description": "Want a copy of a certain document? Ask here",
+        "type":"ticket", 
+        "button":{
+            "emoji":"📃",
+            "label":"Request Documents",
+            "color":"gray"
+        },
+        "ticketAdmins":["1384571389888954560"],
+        "readonlyAdmins":[],
+        "allowCreationByBlacklistedUsers":false,
+        "questions":["hr-documents-1","hr-documents-2"],
+        "channel":{
+            "prefix":"doc-",
+            "suffix":"user-name",
+            "category":"1384561022911910069",
+            "closedCategory":"1428059319378640948",
+            "backupCategory":"",
+            "claimedCategory":[],
+            "description":"A HR Ticket."
+        },
+        
+        "dmMessage":{
+            "enabled":false,
+            "text":"Thank you for creating a ticket in our server! (or leave empty)",
+            "embed":{
+                "enabled":false,
+                "title":"Embed Title! (or leave empty)",
+                "description":"Description (or leave empty)",
+                "customColor":"#f8ab00 (or leave empty)",
+
+                "image":"https://www.example.com/image.png (or leave empty)",
+                "thumbnail":"https://www.example.com/image.png (or leave empty)",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":false
+            }
+        },
+        "ticketMessage":{
+            "enabled":true,
+            "text":"",
+            "embed":{
+                "enabled":true,
+                "title":"Document Request",
+                "description":"Your document request has been filed, a Human Resources employee will review your request shortly.",
+                "customColor":"#7289da",
+
+                "image":"https://files.catbox.moe/zcd7q4.png",
+                "thumbnail":"https://files.catbox.moe/7cf5xt.png",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":true
+            },
+            "ping":{
+                "@here":false,
+                "@everyone":false,
+                "custom":["1384571389888954560"]
+            }
+        },
+        "autoclose":{
+            "enableInactiveHours":false,
+            "inactiveHours":24,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "autodelete":{
+            "enableInactiveDays":false,
+            "inactiveDays":7,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "cooldown":{
+            "enabled":false,
+            "cooldownMinutes":10
+        },
+        "limits":{
+            "enabled":true,
+            "globalMaximum":10, 
+            "userMaximum":1
+        }
+    },
+    {
+        "id":"hr-leave",
+        "name":"Leave of Absence Request",
+        "description": "Taking a break? File your leave here.",
+        "type":"ticket", 
+        "button":{
+            "emoji":"🛳️",
+            "label":"Request for Leave",
+            "color":"gray"
+        },
+        "ticketAdmins":["1384571389888954560"],
+        "readonlyAdmins":[],
+        "allowCreationByBlacklistedUsers":false,
+        "questions":["hr-leave-1","hr-leave-2"],
+        "channel":{
+            "prefix":"loa-",
+            "suffix":"user-name",
+            "category":"1384561022911910069",
+            "closedCategory":"1428059319378640948",
+            "backupCategory":"",
+            "claimedCategory":[],
+            "description":"A HR Ticket."
+        },
+        
+        "dmMessage":{
+            "enabled":false,
+            "text":"Thank you for creating a ticket in our server! (or leave empty)",
+            "embed":{
+                "enabled":false,
+                "title":"Embed Title! (or leave empty)",
+                "description":"Description (or leave empty)",
+                "customColor":"#f8ab00 (or leave empty)",
+
+                "image":"https://www.example.com/image.png (or leave empty)",
+                "thumbnail":"https://www.example.com/image.png (or leave empty)",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":false
+            }
+        },
+        "ticketMessage":{
+            "enabled":true,
+            "text":"",
+            "embed":{
+                "enabled":true,
+                "title":"Leave of Absence Ticket",
+                "description":"Your leave request has been filed, a Human Resources employee will review your request shortly.",
+                "customColor":"#7289da",
+
+                "image":"https://files.catbox.moe/zcd7q4.png",
+                "thumbnail":"https://files.catbox.moe/7cf5xt.png",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":true
+            },
+            "ping":{
+                "@here":false,
+                "@everyone":false,
+                "custom":["1384571389888954560"]
+            }
+        },
+        "autoclose":{
+            "enableInactiveHours":false,
+            "inactiveHours":24,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "autodelete":{
+            "enableInactiveDays":false,
+            "inactiveDays":7,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "cooldown":{
+            "enabled":false,
+            "cooldownMinutes":10
+        },
+        "limits":{
+            "enabled":true,
+            "globalMaximum":10, 
+            "userMaximum":1
+        }
+    },
+    {
+        "id":"it-support",
+        "name":"IT Support",
+        "description": "Something Broke? Tell more here.",
+        "type":"ticket", 
+        "button":{
+            "emoji":"💻",
+            "label":"IT Support",
+            "color":"gray"
+        },
+        "ticketAdmins":["1384571139422158909"],
+        "readonlyAdmins":[],
+        "allowCreationByBlacklistedUsers":false,
+        "questions":["it-1","it-2"],
+        "channel":{
+            "prefix":"it-",
+            "suffix":"counter-dynamic",
+            "category":"1384561100321849375",
+            "closedCategory":"1428059319378640948",
+            "backupCategory":"",
+            "claimedCategory":[],
+            "description":"A IT Ticket."
+        },
+        
+        "dmMessage":{
+            "enabled":false,
+            "text":"Thank you for creating a ticket in our server! (or leave empty)",
+            "embed":{
+                "enabled":false,
+                "title":"Embed Title! (or leave empty)",
+                "description":"Description (or leave empty)",
+                "customColor":"#f8ab00 (or leave empty)",
+
+                "image":"https://www.example.com/image.png (or leave empty)",
+                "thumbnail":"https://www.example.com/image.png (or leave empty)",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":false
+            }
+        },
+        "ticketMessage":{
+            "enabled":true,
+            "text":"",
+            "embed":{
+                "enabled":true,
+                "title":"IT Support",
+                "description":"Thank you for openaing a ticket. A IT employee will be with you shortly.",
+                "customColor":"#7289da",
+
+                "image":"https://files.catbox.moe/bzwgu6.png",
+                "thumbnail":"https://files.catbox.moe/7cf5xt.png",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":true
+            },
+            "ping":{
+                "@here":false,
+                "@everyone":false,
+                "custom":["1384571139422158909"]
+            }
+        },
+        "autoclose":{
+            "enableInactiveHours":false,
+            "inactiveHours":24,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "autodelete":{
+            "enableInactiveDays":false,
+            "inactiveDays":7,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "cooldown":{
+            "enabled":false,
+            "cooldownMinutes":10
+        },
+        "limits":{
+            "enabled":true,
+            "globalMaximum":10, 
+            "userMaximum":3
+        }
+    },
+    {
+        "id":"tpa-digital-convergence-inquiry",
+        "name":"Questions & Inquiries",
+        "description":"Curious about our services? Send us a ticket here.",
+        "type":"ticket", 
+        "button":{
+            "emoji":"❓",
+            "label":"Ask Us",
+            "color":"gray"
+        },
+        "ticketAdmins":["1382349946652725400", "1382349744143077446", "1358464969355563213"],
+        "readonlyAdmins":[],
+        "allowCreationByBlacklistedUsers":false,
+        "questions":["digital-convergence-2"],
+        "channel":{
+            "prefix":"gen-inquiry-",
+            "suffix":"counter-dynamic",
+            "category":"1428048419112357888",
+            "closedCategory":"1428059319378640948",
+            "backupCategory":"",
+            "claimedCategory":[],
+            "description":"A TPA Digital Convergence Ticket"
+        },
+        
+        "dmMessage":{
+            "enabled":false,
+            "text":"Thank you for creating a ticket in our server! (or leave empty)",
+            "embed":{
+                "enabled":false,
+                "title":"Embed Title! (or leave empty)",
+                "description":"Description (or leave empty)",
+                "customColor":"#f8ab00 (or leave empty)",
+
+                "image":"https://www.example.com/image.png (or leave empty)",
+                "thumbnail":"https://www.example.com/image.png (or leave empty)",
+                "fields":[
+                    {"name":"field name","value":"field value","inline":false}
+                ],
+                "timestamp":false
+            }
+        },
+        "ticketMessage":{
+            "enabled":true,
+            "text":"",
+            "embed":{
+                "enabled":true,
+                "title":"Questions/Inquiry Ticket",
+                "description":"Your inquiry has been submitted, a support representative will be with you shortly.",
+                "customColor":"#1A1A1A",
+
+                "image":"https://files.catbox.moe/limx78.png",
+                "thumbnail":"https://files.catbox.moe/u2xh1n.png",
+                "fields":[],
+                "timestamp":true
+            },
+            "ping":{
+                "@here":false,
+                "@everyone":false,
+                "custom":["1428045868178735104"]
+            }
+        },
+        "autoclose":{
+            "enableInactiveHours":false,
+            "inactiveHours":24,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "autodelete":{
+            "enableInactiveDays":false,
+            "inactiveDays":7,
+            "enableUserLeave":false,
+            "disableOnClaim":false
+        },
+        "cooldown":{
+            "enabled":false,
+            "cooldownMinutes":10
+        },
+        "limits":{
+            "enabled":true,
+            "globalMaximum":10, 
+            "userMaximum":3
+        }
     }
 ]

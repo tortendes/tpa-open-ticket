@@ -1,1 +1,49 @@
-[]
+[
+    {
+        "category":"opendiscord:used-option",
+        "key":"tpa-news-general-inquiry",
+        "value":{
+            "id":"tpa-news-general-inquiry",
+            "type":"opendiscord:ticket",
+            "version":"v4.0.7",
+            "data":[
+                {"id":"opendiscord:name","value":"Send as a question"},
+                {"id":"opendiscord:description","value":"Have a general question for TPA News? Click here to ask!"},
+                {"id":"opendiscord:button-emoji","value":"❓"},
+                {"id":"opendiscord:button-label","value":"Ask Us"},
+                {"id":"opendiscord:button-color","value":"blue"},
+                {"id":"opendiscord:admins","value":["1382349946652725400","1382349744143077446","1358464969355563213"]},
+                {"id":"opendiscord:admins-readonly","value":["1358465173186281803"]},
+                {"id":"opendiscord:allow-blacklisted-users","value":false},
+                {"id":"opendiscord:questions","value":["general-inquiry-1","general-inquiry-2"]},
+                {"id":"opendiscord:channel-prefix","value":"general-inquiry-"},
+                {"id":"opendiscord:channel-suffix","value":"counter-dynamic"},
+                {"id":"opendiscord:channel-category","value":"1384561022911910069"},
+                {"id":"opendiscord:channel-category-closed","value":"1428059319378640948"},
+                {"id":"opendiscord:channel-category-backup","value":""},
+                {"id":"opendiscord:channel-categories-claimed","value":[]},
+                {"id":"opendiscord:channel-description","value":"A TPA News Inquiry Ticket."},
+                {"id":"opendiscord:dm-message-enabled","value":false},
+                {"id":"opendiscord:dm-message-text","value":"Thank you for creating a ticket in our server! (or leave empty)"},
+                {"id":"opendiscord:dm-message-embed","value":{"enabled":false,"title":"Embed Title! (or leave empty)","description":"Description (or leave empty)","customColor":"#f8ab00 (or leave empty)","image":"https://www.example.com/image.png (or leave empty)","thumbnail":"https://www.example.com/image.png (or leave empty)","fields":[{"name":"field name","value":"field value","inline":false}],"timestamp":false}},
+                {"id":"opendiscord:ticket-message-enabled","value":true},
+                {"id":"opendiscord:ticket-message-text","value":""},
+                {"id":"opendiscord:ticket-message-embed","value":{"enabled":true,"title":"Your question has been submitted!","description":"Thank you for reaching out to TPA News! A team member will respond to your inquiry as soon as possible.","customColor":"#1D1DC4","image":"https://files.catbox.moe/nafqoa.png","thumbnail":"https://files.catbox.moe/o0x93w.png","fields":[{"name":"field name","value":"field value","inline":false}],"timestamp":true}},
+                {"id":"opendiscord:ticket-message-ping","value":{"@here":true,"@everyone":false,"custom":["1384571389888954560"]}},
+                {"id":"opendiscord:autoclose-enable-hours","value":false},
+                {"id":"opendiscord:autoclose-enable-leave","value":false},
+                {"id":"opendiscord:autoclose-disable-claim","value":false},
+                {"id":"opendiscord:autoclose-hours","value":24},
+                {"id":"opendiscord:autodelete-enable-days","value":false},
+                {"id":"opendiscord:autodelete-enable-leave","value":false},
+                {"id":"opendiscord:autodelete-disable-claim","value":false},
+                {"id":"opendiscord:autodelete-days","value":7},
+                {"id":"opendiscord:cooldown-enabled","value":false},
+                {"id":"opendiscord:cooldown-minutes","value":10},
+                {"id":"opendiscord:limits-enabled","value":true},
+                {"id":"opendiscord:limits-maximum-global","value":50},
+                {"id":"opendiscord:limits-maximum-user","value":3}
+            ]
+        }
+    }
+]

@@ -1,1 +1,38 @@
-[]
+[
+    {
+        "category":"opendiscord:ticket",
+        "key":"1428032098350137478",
+        "value":{
+            "id":"1428032098350137478",
+            "option":"tpa-news-general-inquiry",
+            "version":"v4.0.7",
+            "data":[
+                {"id":"opendiscord:busy","value":false},
+                {"id":"opendiscord:ticket-message","value":"1428032101827219537"},
+                {"id":"opendiscord:participants","value":[{"type":"role","id":"1358464713264201860"},{"type":"role","id":"1358464553029210273"},{"type":"role","id":"1382349946652725400"},{"type":"role","id":"1382349744143077446"},{"type":"role","id":"1358464969355563213"},{"type":"role","id":"1358465173186281803"},{"type":"user","id":"965400168189022290"}]},
+                {"id":"opendiscord:channel-suffix","value":"1"},
+                {"id":"opendiscord:open","value":true},
+                {"id":"opendiscord:opened-by","value":"965400168189022290"},
+                {"id":"opendiscord:opened-on","value":1760539784260},
+                {"id":"opendiscord:closed","value":false},
+                {"id":"opendiscord:closed-by","value":null},
+                {"id":"opendiscord:closed-on","value":null},
+                {"id":"opendiscord:claimed","value":false},
+                {"id":"opendiscord:claimed-by","value":null},
+                {"id":"opendiscord:claimed-on","value":null},
+                {"id":"opendiscord:pinned","value":false},
+                {"id":"opendiscord:pinned-by","value":null},
+                {"id":"opendiscord:pinned-on","value":null},
+                {"id":"opendiscord:for-deletion","value":false},
+                {"id":"opendiscord:category","value":"1384561022911910069"},
+                {"id":"opendiscord:category-mode","value":"normal"},
+                {"id":"opendiscord:autoclose-enabled","value":false},
+                {"id":"opendiscord:autoclose-hours","value":0},
+                {"id":"opendiscord:autoclosed","value":false},
+                {"id":"opendiscord:autodelete-enabled","value":false},
+                {"id":"opendiscord:autodelete-days","value":0},
+                {"id":"opendiscord:answers","value":[{"id":"general-inquiry-1","name":"What is the topic of this ticket?","type":"short","value":"Why is my cat exploding?"},{"id":"general-inquiry-2","name":"How can we help you?","type":"paragraph","value":"Testing 123"}]}
+            ]
+        }
+    }
+]

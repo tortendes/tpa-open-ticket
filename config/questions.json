@@ -1,11 +1,24 @@
 [
     {
-        "id":"example-question-1",
-        "name":"Example Question 1",
+        "id":"hiring-question-1",
+        "name":"What position are you interested in?",
         "type":"short",
         
         "required":true,
-        "placeholder":"Insert your short answer here!",
+        "placeholder":"eg. Journalist, HR Team, Producer, etc.",
+        "length":{
+            "enabled":false,
+            "min":0,
+            "max":128
+        }
+    },
+    {
+        "id":"hiring-question-2",
+        "name":"Tell us more about yourself in DC",
+        "type":"paragraph",
+        
+        "required":true,
+        "placeholder":"Insert your long answer here!",
         "length":{
             "enabled":false,
             "min":0,
@@ -13,12 +26,142 @@
         }
     },
     {
-        "id":"example-question-2",
-        "name":"Example Question 2",
+        "id":"hiring-question-3",
+        "name":"Why do you want to join the team?",
         "type":"paragraph",
         
-        "required":false,
+        "required":true,
         "placeholder":"Insert your long answer here!",
+        "length":{
+            "enabled":false,
+            "min":0,
+            "max":1000
+        }
+    },
+    {
+        "id":"general-inquiry-1",
+        "name":"What is the topic of this ticket?",
+        "type":"short",
+        
+        "required":true,
+        "placeholder":"General Concerns, Why is my cat exploding, etc.",
+        "length":{
+            "enabled":false,
+            "min":0,
+            "max":1000
+        }
+    },
+    {
+        "id":"general-inquiry-2",
+        "name":"How can we help you?",
+        "type":"paragraph",
+        
+        "required":true,
+        "placeholder":"According to all known laws of aviation, there is no way a bee should be able to fly.",
+        "length":{
+            "enabled":false,
+            "min":0,
+            "max":1000
+        }
+    },
+    {
+        "id":"digital-convergence-1",
+        "name":"What is the topic of this ticket?",
+        "type":"short",
+        
+        "required":true,
+        "placeholder":"Billing, Account, Server, etc.",
+        "length":{
+            "enabled":false,
+            "min":0,
+            "max":1000
+        }
+    },
+    {
+        "id":"digital-convergence-2",
+        "name":"How can we help you?",
+        "type":"paragraph",
+        
+        "required":true,
+        "placeholder":"According to all known laws of aviation, there is no way a bee should be able to fly.",
+        "length":{
+            "enabled":false,
+            "min":0,
+            "max":1000
+        }
+    },
+    {
+        "id":"it-1",
+        "name":"What is the topic of this ticket?",
+        "type":"short",
+        
+        "required":true,
+        "placeholder":"Writers Panel, Website, Mailbox, etc.",
+        "length":{
+            "enabled":false,
+            "min":0,
+            "max":1000
+        }
+    },
+    {
+        "id":"it-2",
+        "name":"How can we help you?",
+        "type":"paragraph",
+        
+        "required":true,
+        "placeholder":"According to all known laws of aviation, there is no way a bee should be able to fly.",
+        "length":{
+            "enabled":false,
+            "min":0,
+            "max":1000
+        }
+    },
+    {
+        "id":"hr-documents-1",
+        "name":"What department are you in?",
+        "type":"short",
+        
+        "required":true,
+        "placeholder":"TPA News, Mediacorp, TPA Digital Convergence, etc.",
+        "length":{
+            "enabled":false,
+            "min":0,
+            "max":1000
+        }
+    },
+    {
+        "id":"hr-documents-2",
+        "name":"What document are you requesting?",
+        "type":"short",
+        
+        "required":true,
+        "placeholder":"Performance Review, Notices, etc.",
+        "length":{
+            "enabled":false,
+            "min":0,
+            "max":1000
+        }
+    },
+    {
+        "id":"hr-leave-1",
+        "name":"How long will your leave be?",
+        "type":"short",
+        
+        "required":true,
+        "placeholder":"Two weeks, Three days, etc.",
+        "length":{
+            "enabled":false,
+            "min":0,
+            "max":1000
+        }
+    },
+    {
+        "id":"hr-leave-2",
+        "name":"What is the reason for your leave request",
+        "type":"short",
+        
+        "required":false,
+        "placeholder":"Two weeks, Three days, etc.",
         "length":{
             "enabled":false,
             "min":0,
